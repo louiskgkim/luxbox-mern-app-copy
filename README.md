@@ -29,7 +29,7 @@ Some files will be needed in order for this generator to operate:
 
 
 ## Screenshots
-Add screenshots later
+Add screenshots later...
 
 ### Repository:
 ```
