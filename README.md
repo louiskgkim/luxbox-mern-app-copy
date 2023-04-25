@@ -14,15 +14,16 @@ This project aims to provide a centralized platform for frequent luxury goods pu
 ## Installation
 Some files will be needed in order for this generator to operate:
 
-- npm i express @4.17.1
-- npm i apollo server-express @2.15.0
-
+- npm i express @4.18.2
+- npm i apollo server-express @3.12.0
+- npm i graphql @16.6.0
+- npm i mongoose @7.0.4
 
 ## Usage
 1. Clone the repository
 2. Open terminal in the right file path
 3. Run npm i into terminal
-4. Run npm run develop into terminal
+4. Run npm run dev into terminal
 5. The application should now run on http://localhost:3000/
 6. Or access via Heroku: 
 
@@ -44,14 +45,12 @@ Collaborators:
 - Jordon Lor: https://github.com/JordonLo
 
 
-
 References:
 
 - [Express.js Installation Guide](https://expressjs.com/en/starter/installing.html)
-- [Node.js Installation Guide](https://nodejs.org/en/download)
 - [MongoDB Installation Guide](https://www.mongodb.com/try/download/community)
 - [Stripe API Installation Guide](https://stripe.com/docs/keys)
-
+- [Mongoose Installation Guide](https://mongoosejs.com/docs/)
 
 
 ## License
