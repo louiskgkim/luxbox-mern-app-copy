@@ -7,6 +7,7 @@ import ProductList from '../pages/Product/ProductList';
 import ProductDetail from '../pages/Product/ProductDetail';
 import Designers from '../pages/Designers';
 import ContactUs from '../pages/ContactUs';
+import Error from '../pages/Error';
 
 const Main = (props) => {
     const { loading, data } = useQuery(QUERY_PRODUCTS);
@@ -109,19 +110,31 @@ const Main = (props) => {
                     }
                 />
                 <Route
+                    path="/shop/search/:searchInput"
+                    element={
+                        <ProductList
+                            category="Search Results"
+                            products={allProducts}
+                        />
+                    }
+                />
+                <Route
                     path="/shop/product/:id"
                     element={
-                        <ProductDetail
-                        />
+                        <ProductDetail />
                     }
                 />
                 <Route
                     path="/contact-us"
                     element={
-                        <ContactUs
-                        />
+                        <ContactUs />
                     }
                 />
+                <Route
+                    path="*"
+                    element={
+                        <Error />
+                    } />
             </Routes>
         </main>
     );

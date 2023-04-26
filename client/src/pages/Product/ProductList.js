@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import FilterListIcon from '@mui/icons-material/FilterList';
 import NativeSelect from '@mui/material/NativeSelect';
@@ -11,7 +11,23 @@ import ProductCard from "../../components/Product/ProductCard";
 import NotFound from '../../components/Product/NotFound';
 
 const ProductList = (props) => {
-    const products = props.products;
+    const { searchInput } = useParams();
+
+    let products;
+
+    if (props.category === "Search Results") {
+        products = props.products.filter(product => Object.values(product).some(element => {
+            if (element.toString().toLowerCase().includes(searchInput.toLowerCase())) {
+                return true;
+            }
+            return false;
+        }
+        ))
+    }
+    else {
+        products = props.products;
+    }
+
     const productsNum = products.length;
 
     return (

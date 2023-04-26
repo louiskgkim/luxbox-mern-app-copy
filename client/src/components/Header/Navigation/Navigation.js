@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import MainMenu from './MainMenu';
 import WishlistIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBagOutlined';
-import SearchBar from '../SearchBar';
+import SearchBar from '../Search/SearchBar';
 
 const Navigation = (props) => {
     return (
