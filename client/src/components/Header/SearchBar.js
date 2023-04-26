@@ -37,7 +37,8 @@ const SearchBar = (props) => {
                                         }}
                                     />
                                 </InputAdornment>
-                            )
+                            ),
+                            autoFocus:true
                         }}
                         variant="standard"
                         focused

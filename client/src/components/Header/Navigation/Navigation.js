@@ -9,7 +9,9 @@ const Navigation = (props) => {
         <nav className="header-nav">
             <div className="header-nav-row">
                 <div className="collapsible-menu-container">
-                    <MainMenu />
+                    <div className="collapsible-menu">
+                        <MainMenu />
+                    </div>
                 </div>
                 <div className="logo-container">
                     <Link to="/" className="link">

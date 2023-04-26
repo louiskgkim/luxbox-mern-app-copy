@@ -34,12 +34,13 @@ header {
 /* --- Banner component --- */
 .banner-wrapper {
   width: 100%;
+  font-size: 0.8rem;
   color: var(--light);
   background-color: var(--medium-dark);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 /* --- Navigation component --- */
@@ -56,20 +57,20 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
 }
 
 .header-nav-row:nth-of-type(1) {
   color: var(--light);
   background-color: var(--dark);
+  padding: 1rem;
 }
 
-.header-nav-row:nth-of-type(2) {
-  display: none;
+.collapsible-menu-container {
+  width: 30%;
 }
 
 .logo-container {
-  width: 100%;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,11 +81,23 @@ header {
 }
 
 .login-container {
+  width: 30%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 1rem;
 }
+
+.header-nav-row:nth-of-type(2) {
+  background-color: var(--dark);
+  padding: 0.5rem 1rem;
+
+}
+
+.expandable-menu-container {
+  display: none;
+}
+
 
 /* --- MainMenu component  */
 .main-menu {
@@ -156,6 +169,7 @@ header {
 
 .hidden-search-bar-row h1 {
   width: 100%;
+  font-size: 1.3rem;
   text-align: center;
 }
 
@@ -272,8 +286,108 @@ main {
   height: 20px;
 }
 
+/* --- ProductList component --- */
+.main-content-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
 
-/* --- Footer component */
+.main-content-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.main-content-row:first-of-type {
+  border-bottom: 1px solid var(--light);
+}
+
+.main-content-row h3 {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.side-product-filter-container {
+  display: none;
+}
+
+/* --- ProductFilterAndSort component --- */
+.product-filter-and-sort-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-filter {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* --- ProductCard component --- */
+.product-card-column-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 47%);
+  grid-gap: 1rem;
+  justify-content: space-between;
+}
+
+.product-card-column {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.product-card {
+  width: 100%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.3rem;
+}
+
+.product-card-image {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background-color: var(--medium-dark);
+}
+
+.product-card-brand {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.product-card-name {
+  width: 100%;
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
+.product-card-price {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* --- Designers component --- */
+
+
+/* --- Footer component --- */
 footer {
   font-size: 0.8rem;
   display: flex;
@@ -282,8 +396,17 @@ footer {
   padding: 1rem;
 }
 
+
 /* For screens larger than 768px*/
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+  .main-content-wrapper {
+    padding: 0 3rem;
+  }
+
+  .product-card-column-wrapper {
+    grid-template-columns: repeat(auto-fill, 31%);
+  }
+}
 
 /* For screens larger than 992px */
 @media screen and (min-width: 992px) {
@@ -292,7 +415,7 @@ footer {
     padding: 0.5rem 1rem;
   }
 
-  .collapsible-menu-container {
+  .collapsible-menu {
     display: none;
   }
 
@@ -327,7 +450,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 
   .main-menu {
@@ -421,4 +543,33 @@ footer {
     font-size: 0.8rem;
   }
 
+
+  /* --- ProductList component --- */
+  .main-content-row:nth-of-type(3) {
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .side-product-filter-container {
+    display: block;
+    width: 30%;
+    font-size: 0.8rem;
+  }
+
+  .MuiAccordion-root .MuiAccordionSummary-content p {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  .MuiAccordionDetails-root ul {
+    font-size: 0.8rem;
+  }
+
+  .MuiAccordionDetails-root ul li {
+    padding: 0.5rem 0;
+  }
+
+  .MuiAccordionDetails-root ul li:hover {
+    text-decoration: underline;
+  }
 }

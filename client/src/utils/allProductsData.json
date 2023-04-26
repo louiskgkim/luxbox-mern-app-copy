@@ -1,0 +1,135 @@
+[
+    {
+        "image": "image",
+        "brand": "Zimmermann",
+        "category": "clothing",
+        "subCategory": "dress",
+        "name": "Devi gathered floral-print mini dress",
+        "price": "1,350",
+        "color": "Red",
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "description": "The romantic spirit of this 'Devi' dress is a signature of Zimmermann. It's made from silk-chiffon that's gathered across the yoke, sleeves and waistline to flow effortlessly. Complement the peachy pinks with a matching lip.",
+        "onSale": "false",
+        "createdAt": "2023-04-25"
+    },
+    {
+        "image": "image",
+        "brand": "Balenciaga",
+        "category": "shoes",
+        "subCategory": "heels",
+        "name": "Mid heels",
+        "price": "900",
+        "color": "Pink",
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "discription": "Nice heels",
+        "onSale": "false",
+        "createdAt": "2023-04-25"
+    },
+    {
+        "image": "image",
+        "brand": "Club Monaco",
+        "category": "clothing",
+        "subCategory": "pants",
+        "name": "Woven pants",
+        "price": "800",
+        "color": "White",
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "description": "Cool pants",
+        "onSale": "true",
+        "createdAt": "2023-04-27"
+    },
+    {
+        "image": "image",
+        "brand": "Club Monaco",
+        "category": "clothing",
+        "subCategory": "pants",
+        "name": "Woven pants",
+        "price": "800",
+        "color": "White",
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "description": "Cool pants",
+        "onSale": "true",
+        "createdAt": "2023-04-27"
+    },
+    {
+        "image": "image",
+        "brand": "Club Monaco",
+        "category": "clothing",
+        "subCategory": "pants",
+        "name": "Woven pants",
+        "price": "800",
+        "color": "White",
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "description": "Cool pants",
+        "onSale": "true",
+        "createdAt": "2023-04-27"
+    },
+    {
+        "image": "image",
+        "brand": "Club Monaco",
+        "category": "clothing",
+        "subCategory": "pants",
+        "name": "Woven pants",
+        "price": "800",
+        "color": "White",
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "description": "Cool pants",
+        "onSale": "true",
+        "createdAt": "2023-04-27"
+    },
+    {
+        "image": "image",
+        "brand": "Club Monaco",
+        "category": "clothing",
+        "subCategory": "pants",
+        "name": "Woven pants",
+        "price": "800",
+        "color": "White",
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "description": "Cool pants",
+        "onSale": "true",
+        "createdAt": "2023-04-27"
+    }
+]
