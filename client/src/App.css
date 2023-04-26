@@ -468,7 +468,9 @@ main {
 }
 
 /* --- Designers component --- */
-
+.designers-list {
+  width: 100%;
+}
 
 /* --- Footer component --- */
 footer {
@@ -675,6 +677,10 @@ footer {
 
   .product-detail-info {
     width: 40%;
+  }
+
+  .designers-list {
+    width: 500px;
   }
 
 }

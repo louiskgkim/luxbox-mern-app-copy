@@ -25,9 +25,10 @@ class AlphabetItem extends Component {
                 <div
                     style={{
                         fontSize: '0.8rem',
+                        textTransform: 'uppercase',
                         marginTop: 4,
                         marginBottom: 8,
-                        padding: '0.3rem 0'
+                        lineHeight: '2rem'
                     }}
                 >
                     {this.props.children}

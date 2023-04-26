@@ -21,9 +21,6 @@ const Designers = (props) => {
                 <AlphabetList
                     className="designers-list"
                     data={designers}
-                    style={{
-                        width: "100%"
-                    }}
                     generateFn={
                         (item, index) => {
                             return (
