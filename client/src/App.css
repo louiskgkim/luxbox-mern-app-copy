@@ -197,6 +197,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  padding-bottom: 2.5rem;
 }
 
 /* --- Home component --- */
@@ -474,7 +475,10 @@ main {
 
 /* --- Footer component --- */
 footer {
+  height: 2.5rem;
   font-size: 0.8rem;
+  position: absolute;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
