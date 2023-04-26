@@ -8,7 +8,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ProductCard from "../../components/Product/ProductCard";
-import NotFound from '../../components/NotFound';
+import NotFound from '../../components/Product/NotFound';
 
 const ProductList = (props) => {
     const products = props.products;
@@ -154,9 +154,9 @@ const ProductList = (props) => {
                                 </AccordionDetails>
                             </Accordion>
                         </div>
-                        <div className="product-card-column-wrapper">
-                            {products.length > 0
-                                ? products.map((product, i) => {
+                        {products.length > 0
+                            ? <div className="product-card-column-wrapper">
+                                {products.map((product, i) => {
                                     return (
                                         <ProductCard
                                             key={i}
@@ -171,10 +171,10 @@ const ProductList = (props) => {
                                             onSale={product.onSale}
                                         />
                                     )
-                                })
-                                : <NotFound />
-                            }
-                        </div>
+                                })}
+                            </div>
+                            : <NotFound />
+                        }
                     </div >
                 </Fragment>
                 : <Fragment>

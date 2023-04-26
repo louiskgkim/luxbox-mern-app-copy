@@ -468,6 +468,13 @@ main {
   opacity: 0.8;
 }
 
+/* --- NotFound component --- */
+.not-found-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /* --- Designers component --- */
 .designers-list {
   width: 100%;
