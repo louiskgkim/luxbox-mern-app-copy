@@ -4,6 +4,7 @@ import { QUERY_PRODUCTS } from '../utils/queries';
 
 import Home from '../pages/Home/Home';
 import ProductList from '../pages/Product/ProductList';
+import ProductDetail from '../pages/Product/ProductDetail';
 import Designers from '../pages/Designers';
 
 const Main = (props) => {
@@ -103,6 +104,13 @@ const Main = (props) => {
                         <ProductList
                             category="Sale"
                             products={saleProducts}
+                        />
+                    }
+                />
+                <Route
+                    path="/shop/product/:id"
+                    element={
+                        <ProductDetail
                         />
                     }
                 />

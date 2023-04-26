@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import justLandedImg from '../../assets/img/index-just-landed.jpg';
-import clothingImg from '../../assets/img/shop-category-clothing.jpg';
-import shoesImg from '../../assets/img/shop-category-shoes.jpg';
-import bagsImg from '../../assets/img/shop-category-bags.jpg';
-import jewelryAndAccessoriesImg from '../../assets/img/shop-category-jewelry-and-accessories.jpg';
-import beautyImg from '../../assets/img/shop-category-beauty.jpg';
-import homeImg from '../../assets/img/shop-category-home.jpg';
+import justLandedImg from '../../assets/img/homepage/just-landed.jpg';
+import clothingImg from '../../assets/img/homepage/clothing.jpg';
+import shoesImg from '../../assets/img/homepage/shoes.jpg';
+import bagsImg from '../../assets/img/homepage/bags.jpg';
+import jewelryAndAccessoriesImg from '../../assets/img/homepage/jewelry-and-accessories.jpg';
+import beautyImg from '../../assets/img/homepage/beauty.jpg';
+import homeImg from '../../assets/img/homepage/home.jpg';
 
 const Home = (props) => {
     return (

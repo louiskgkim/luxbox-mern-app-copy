@@ -5,13 +5,12 @@ const typeDefs = gql`
   type Product {
     _id: ID!
     image: String!
-    brand: String!
+    designer: String!
     category: String!
     subCategory: String!
     name: String!
     price: Int!
     color: String!
-    description: String!
     onSale: Boolean!
     createdAt: String!
   }

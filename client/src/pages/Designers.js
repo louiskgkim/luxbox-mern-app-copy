@@ -5,8 +5,8 @@ const Designers = (props) => {
     let designers = [];
 
     props.products.forEach((product) => {
-        if (!designers.includes(product.brand)) {
-            designers.push(product.brand)
+        if (!designers.includes(product.designer)) {
+            designers.push(product.designer)
         }
     })
 

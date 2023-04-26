@@ -5,13 +5,12 @@ export const QUERY_PRODUCTS = gql`
     products {
       _id
       image
-      brand
+      designer
       category
       subCategory
       name
       price
       color
-      description
       createdAt
     }
   }

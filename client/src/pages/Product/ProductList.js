@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProductFilterAndSort from "../../components/Product/ProductFilterAndSort";
+
+import FilterListIcon from '@mui/icons-material/FilterList';
+import NativeSelect from '@mui/material/NativeSelect';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ProductCard from "../../components/Product/ProductCard";
 
 const ProductList = (props) => {
     const products = props.products;
     const productsNum = products.length;
-    console.log(products);
 
     return (
         <section className="main-content-wrapper">
@@ -19,7 +19,34 @@ const ProductList = (props) => {
                 <h3>{props.category}</h3>
             </div>
             <div className="main-content-row">
-                <ProductFilterAndSort productsNum={productsNum} />
+                <div className="product-filter-and-sort-wrapper">
+                    <div className="product-filter">
+                        <div className="product-filter-icon">
+                            <FilterListIcon /><span>Filter</span>
+                        </div>
+                        <span id="products-num"> {productsNum} Results </span>
+                    </div>
+                    <div className="product-sort">
+                        <NativeSelect
+                            defaultValue="Sort By"
+                            inputProps={{
+                                id: 'uncontrolled-native',
+                            }}
+                            sx={{
+                                width: "fit-content",
+                                fontSize: "0.9rem",
+                                textAlign: "center",
+                                "& .MuiNativeSelect-select:after": {
+                                    borderBottom: "1px solid white",
+                                },
+                            }}
+                        >
+                            <option value="newest">Newest</option>
+                            <option value="price-high-to-low">Price High to Low</option>
+                            <option value="price-low-to-high">Price Low to High</option>
+                        </NativeSelect>
+                    </div>
+                </div>
             </div>
             <div className="main-content-row">
                 <div className="side-product-filter-container">
@@ -29,47 +56,45 @@ const ProductList = (props) => {
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                         >
-                            <Typography>CATEGORY</Typography>
+                            <p>CATEGORY</p>
                         </AccordionSummary>
                         <AccordionDetails>
                             <ul>
-                                <Typography>
-                                    <li>
-                                        <Link to="/shop/clothing" className="link">
-                                            Clothing
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/shop/shoes" className="link">
-                                            Shoes
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/shop/bags" className="link">
-                                            Bags
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/shop/jewelry-and-accessories" className="link">
-                                            Jewelry & Accessories
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/shop/beauty" className="link">
-                                            Beauty
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/shop/home" className="link">
-                                            Home
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/shop/sale" className="link">
-                                            Sale
-                                        </Link>
-                                    </li>
-                                </Typography>
+                                <li>
+                                    <Link to="/shop/clothing" className="link">
+                                        Clothing
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/shop/shoes" className="link">
+                                        Shoes
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/shop/bags" className="link">
+                                        Bags
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/shop/jewelry-and-accessories" className="link">
+                                        Jewelry & Accessories
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/shop/beauty" className="link">
+                                        Beauty
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/shop/home" className="link">
+                                        Home
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/shop/sale" className="link">
+                                        Sale
+                                    </Link>
+                                </li>
                             </ul>
                         </AccordionDetails>
                     </Accordion>
@@ -79,11 +104,11 @@ const ProductList = (props) => {
                             aria-controls="panel2a-content"
                             id="panel2a-header"
                         >
-                            <Typography>DESIGNER</Typography>
+                            <p>DESIGNER</p>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography>
-                            </Typography>
+                            <p>
+                            </p>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
@@ -92,11 +117,11 @@ const ProductList = (props) => {
                             aria-controls="panel3a-content"
                             id="panel3a-header"
                         >
-                            <Typography>COLOR</Typography>
+                            <p>COLOR</p>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography>
-                            </Typography>
+                            <p>
+                            </p>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
@@ -105,11 +130,11 @@ const ProductList = (props) => {
                             aria-controls="panel4a-content"
                             id="panel4a-header"
                         >
-                            <Typography>CLOTHING SIZE</Typography>
+                            <p>CLOTHING SIZE</p>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography>
-                            </Typography>
+                            <p>
+                            </p>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
@@ -118,11 +143,11 @@ const ProductList = (props) => {
                             aria-controls="panel5a-content"
                             id="panel5a-header"
                         >
-                            <Typography>SHOE SIZE</Typography>
+                            <p>SHOE SIZE</p>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography>
-                            </Typography>
+                            <p>
+                            </p>
                         </AccordionDetails>
                     </Accordion>
 
@@ -134,12 +159,14 @@ const ProductList = (props) => {
                                 <ProductCard
                                     key={i}
                                     image={product.image}
-                                    brand={product.brand}
+                                    designer={product.designer}
+                                    category={product.category}
+                                    subCategory={product.subCategory}
                                     name={product.name}
                                     price={product.price}
                                     color={product.color}
-                                    size={product.size}
                                     description={product.description}
+                                    onSale={product.onSale}
                                 />
                             )
                         }
@@ -148,12 +175,14 @@ const ProductList = (props) => {
                                 <ProductCard
                                     key={i}
                                     image={product.image}
-                                    brand={product.brand}
+                                    designer={product.designer}
+                                    category={product.category}
+                                    subCategory={product.subCategory}
                                     name={product.name}
                                     price={product.price}
                                     color={product.color}
-                                    size={product.size}
                                     description={product.description}
+                                    onSale={product.onSale}
                                 />
                             )
                         }

@@ -5,7 +5,7 @@ const productSchema = new Schema({
         type: String,
         required: true,
     },
-    brand: {
+    designer: {
         type: String,
         required: true,
     },
@@ -27,10 +27,6 @@ const productSchema = new Schema({
         min: 0
     },
     color: {
-        type: String,
-        required: true,
-    },
-    description: {
         type: String,
         required: true,
     },
