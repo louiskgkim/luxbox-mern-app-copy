@@ -11,6 +11,7 @@ import ProductCard from "../../components/Product/ProductCard";
 const ProductList = (props) => {
     const products = props.products;
     const productsNum = products.length;
+    console.log(products);
 
     return (
         <section className="main-content-wrapper">
@@ -31,8 +32,8 @@ const ProductList = (props) => {
                             <Typography>CATEGORY</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography>
-                                <ul>
+                            <ul>
+                                <Typography>
                                     <li>
                                         <Link to="/shop/clothing" className="link">
                                             Clothing
@@ -68,9 +69,8 @@ const ProductList = (props) => {
                                             Sale
                                         </Link>
                                     </li>
-
-                                </ul>
-                            </Typography>
+                                </Typography>
+                            </ul>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>

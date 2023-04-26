@@ -1,10 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './Home/Home';
-import ProductList from './Product/ProductList';
-import allProducts from '../utils/allProductsData.json';
-import Designers from './Designers';
+import { useQuery } from '@apollo/client';
+import { QUERY_PRODUCTS } from '../utils/queries';
+
+import Home from '../pages/Home/Home';
+import ProductList from '../pages/Product/ProductList';
+import Designers from '../pages/Designers';
 
 const Main = (props) => {
+    const { loading, data } = useQuery(QUERY_PRODUCTS);
+    const allProducts = data?.products || [];
+
     const clothingProducts = allProducts.filter(product => product.category === "clothing");
     const shoesProducts = allProducts.filter(product => product.category === "shoes");
     const bagsProducts = allProducts.filter(product => product.category === "bags");
