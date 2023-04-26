@@ -6,6 +6,7 @@ import Home from '../pages/Home/Home';
 import ProductList from '../pages/Product/ProductList';
 import ProductDetail from '../pages/Product/ProductDetail';
 import Designers from '../pages/Designers';
+import ContactUs from '../pages/ContactUs';
 
 const Main = (props) => {
     const { loading, data } = useQuery(QUERY_PRODUCTS);
@@ -111,6 +112,13 @@ const Main = (props) => {
                     path="/shop/product/:id"
                     element={
                         <ProductDetail
+                        />
+                    }
+                />
+                <Route
+                    path="/contact-us"
+                    element={
+                        <ContactUs
                         />
                     }
                 />
