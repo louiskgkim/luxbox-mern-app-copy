@@ -20,33 +20,24 @@ const userSchema = new Schema({
     }
 }, { timestamps: true });
 
-
-// set up pre-save middleware to create password
-profileSchema.pre('save', async function (next) {
-    if (this.isNew || this.isModified('password')) {
-        const saltRounds = 10;
-        this.password = await bcrypt.hash(this.password, saltRounds);
-    }
-
-    next();
-});
-
-// compare the incoming password with the hashed password
-profileSchema.methods.isCorrectPassword = async function (password) {
-    return bcrypt.compare(password, this.password);
-};
-
-
+// Set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {
     try {
-        const hashedPassword = await bcrypt.hash(this.password, 10);
-        console.log("hashedPassword", hashedPassword);
-        this.password = hashedPassword;
+        if (this.isNew || this.isModified('password')) {
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(this.password, saltRounds);
+            this.password = hashedPassword;
+        }
         next();
     } catch (err) {
         console.log("error in save", err);
     }
 });
+
+// Compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
 
 userSchema.plugin(uniqueValidator, { message: '\'{VALUE}\' is already in use. Try another name.' });
 
