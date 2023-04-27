@@ -17,6 +17,14 @@ const userSchema = new Schema({
         type: String,
         required: [true, "Password is required."],
         minlength: [4, "Password must be at least {MINLENGTH} characters long."]
+    },
+    firstName: {
+        type: String,
+        required: [true, "First name is required."],
+    },
+    lastName: {
+        type: String,
+        required: [true, "Last name is required."]
     }
 }, { timestamps: true });
 
