@@ -22,5 +22,101 @@
         "onSale": false,
         "createdAt": "2023-02-29T00:22:53.902Z",
         "updatedAt": "2023-02-29T00:22:53.902Z"
-    }
+    },
+    {
+        "image": "03",
+        "designer": "CHRISTIAN DIOR",
+        "category": "bags",
+        "subCategory": "Shoulder Bags",
+        "name": "Small lady",
+        "price": 5600,
+        "color": "Spring green",
+        "onSale": false,
+        "createdAt": "2023-02-29T00:22:53.902Z",
+        "updatedAt": "2023-03-29T00:22:53.902Z"
+    },
+    {
+        "image": "04",
+        "designer": "HERMES",
+        "category": "bags",
+        "subCategory": "Crossbody Bags",
+        "name": "Roulis",
+        "price": 6000,
+        "color": "Forest green",
+        "onSale": false,
+        "createdAt": "2023-03-29T00:22:53.902Z",
+        "updatedAt": "2023-04-29T00:22:53.902Z"
+    },
+    {
+        "image": "05",
+        "designer": "HERMES",
+        "category": "bags",
+        "subCategory": "Tote Bags",
+        "name": "Wave",
+        "price": 2500,
+        "color": "Wave print",
+        "onSale": false,
+        "createdAt": "2023-04-29T00:22:53.902Z",
+        "updatedAt": "2023-05-29T00:22:53.902Z"
+    },
+    {
+        "image": "06",
+        "designer": "HERMES",
+        "category": "bags",
+        "subCategory": "Tote Bags",
+        "name": "Birkin",
+        "price": 20000,
+        "color": "Tan",
+        "onSale": false,
+        "createdAt": "2023-05-29T00:22:53.902Z",
+        "updatedAt": "2023-06-29T00:22:53.902Z"
+    },
+    {
+        "image": "07",
+        "designer": "PRADA",
+        "category": "bags",
+        "subCategory": "Tote Bags",
+        "name": "Kristen",
+        "price": 3600,
+        "color": "White",
+        "onSale": false,
+        "createdAt": "2023-06-29T00:22:53.902Z",
+        "updatedAt": "2023-07-29T00:22:53.902Z"
+    },
+    {
+        "image": "08",
+        "designer": "PRADA",
+        "category": "bags",
+        "subCategory": "Shoulder Bags",
+        "name": "Re-edition 2005 saffiano",
+        "price": 2550,
+        "color": "Green",
+        "onSale": false,
+        "createdAt": "2023-07-29T00:22:53.902Z",
+        "updatedAt": "2023-08-29T00:22:53.902Z"
+    },
+    {
+        "image": "09",
+        "designer": "PRADA",
+        "category": "bags",
+        "subCategory": "Tote Bags",
+        "name": "Symbole",
+        "price": 2550,
+        "color": "Sand beige",
+        "onSale": false,
+        "createdAt": "2023-08-29T00:22:53.902Z",
+        "updatedAt": "2023-09-29T00:22:53.902Z"
+    },
+    {
+        "image": "10",
+        "designer": "THOM BROWNE",
+        "category": "bags",
+        "subCategory": "Crossbody Bags",
+        "name": "Mini hector",
+        "price": 2215,
+        "color": "Gray plaid",
+        "onSale": false,
+        "createdAt": "2023-09-29T00:22:53.902Z",
+        "updatedAt": "2023-10-29T00:22:53.902Z"
+    },
 ]
