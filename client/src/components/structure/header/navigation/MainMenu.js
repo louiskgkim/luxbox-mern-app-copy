@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+
+import MenuIcon from '@mui/icons-material/Menu';
 
 const MainMenu = (props) => {
     const [bgColor, setBgColor] = useState("white");

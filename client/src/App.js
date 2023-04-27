@@ -4,9 +4,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink, } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Header from './components/Header/Header';
-import Main from './pages/Main';
-import Footer from './components/Footer/Footer';
+import Header from './components/structure/header';
+import Main from './components/structure/main';
+import Footer from './components/structure/footer';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

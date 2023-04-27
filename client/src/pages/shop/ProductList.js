@@ -1,14 +1,16 @@
 import React, { Fragment, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+import ProductCard from '../../components/product/ProductCard';
+import NotFound from '../../components/product/NotFound';
+
 import FilterListIcon from '@mui/icons-material/FilterList';
 import NativeSelect from '@mui/material/NativeSelect';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ProductCard from "../../components/Product/ProductCard";
-import NotFound from '../../components/Product/NotFound';
+
 
 const ProductList = (props) => {
     const [sortState, setSortState] = useState();

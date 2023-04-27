@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
+
 import MainMenu from './MainMenu';
+import SearchBar from '../search/SearchBar';
+
 import WishlistIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBagOutlined';
-import SearchBar from '../Search/SearchBar';
+
+import Auth from '../../../../utils/auth';
 
 const Navigation = (props) => {
     return (

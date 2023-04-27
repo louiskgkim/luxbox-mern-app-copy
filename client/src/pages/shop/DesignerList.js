@@ -1,7 +1,7 @@
-import AlphabetList from '../utils/AlphabetList';
+import AlphabetList from '../../utils/AlphabetList';
 import { Link } from 'react-router-dom';
 
-const Designers = (props) => {
+const DesignerList = (props) => {
     let designers = [];
 
     props.products.forEach((product) => {
@@ -36,4 +36,4 @@ const Designers = (props) => {
     );
 };
 
-export default Designers;
+export default DesignerList;

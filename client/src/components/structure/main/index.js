@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_PRODUCTS } from '../utils/queries';
+import { QUERY_PRODUCTS } from '../../../utils/queries';
 
-import Home from '../pages/Home/Home';
-import ProductList from '../pages/Product/ProductList';
-import ProductDetail from '../pages/Product/ProductDetail';
-import Designers from '../pages/Designers';
-import ContactUs from '../pages/ContactUs';
-import Error from '../pages/Error';
+import Home from '../../../pages/home';
+import ProductList from '../../../pages/shop/ProductList';
+import ProductDetail from '../../../pages/shop/ProductDetail';
+import DesignerList from '../../../pages/shop/DesignerList';
+import ContactUs from '../../../pages/support/ContactUs';
+import Error from '../../../pages/support/Error';
 
 const Main = (props) => {
     const { loading, data } = useQuery(QUERY_PRODUCTS);
@@ -41,7 +41,7 @@ const Main = (props) => {
                 <Route
                     path="/shop/designers"
                     element={
-                        <Designers
+                        <DesignerList
                             category="Designers"
                             products={allProducts}
                         />
