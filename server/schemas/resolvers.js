@@ -19,6 +19,23 @@ const resolvers = {
         createUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
+            return { user, token };
+        },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError('Invalid credentials');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Invalid credentials');
+            }
+
+            const token = signToken(user);
+            return { user, token };
         },
     }
 };
