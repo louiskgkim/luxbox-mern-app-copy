@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+
 import Header from './components/Header/Header';
 import Main from './pages/Main';
 import Footer from './components/Footer/Footer';

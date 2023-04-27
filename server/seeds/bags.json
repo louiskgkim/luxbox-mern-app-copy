@@ -1,0 +1,26 @@
+[
+    {
+        "image": "01",
+        "designer": "CHRISTIAN DIOR",
+        "category": "bags",
+        "subCategory": "Shoulder Bags",
+        "name": "Caro shoulder bag",
+        "price": 3000,
+        "color": "Gray",
+        "onSale": false,
+        "createdAt": "2022-02-29T00:22:53.902Z",
+        "updatedAt": "2022-02-29T00:22:53.902Z"
+    },
+    {
+        "image": "02",
+        "designer": "CHRISTIAN DIOR",
+        "category": "bags",
+        "subCategory": "Tote Bags",
+        "name": "Lady-d-Light tote bag",
+        "price": 4500,
+        "color": "Beige",
+        "onSale": false,
+        "createdAt": "2023-02-29T00:22:53.902Z",
+        "updatedAt": "2023-02-29T00:22:53.902Z"
+    }
+]

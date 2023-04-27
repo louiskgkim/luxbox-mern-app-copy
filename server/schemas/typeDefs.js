@@ -1,25 +1,29 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Tech {
+  # Define which fields are accessible from the Product model
+  type Product {
     _id: ID!
+    image: String!
+    designer: String!
+    category: String!
+    subCategory: String!
     name: String!
+    price: Int!
+    color: String!
+    onSale: Boolean!
+    createdAt: String!
   }
-  type Matchup {
-    _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
-  }
-  type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
-  }
-  type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
-  }
-`;
 
+  # Define which queries the front end is allowed to make and what data is returned
+  type Query {
+    products: [Product]
+  }
+  `;
+
+// # Define which mutations the client is allowed to make
+// type Mutation {
+//   # Set the required fields for new schools
+//   addSchool(name: String!, location: String!, studentCount: Int!): School
+// }
 module.exports = typeDefs;
