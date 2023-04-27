@@ -1,4 +1,6 @@
-const { Product } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+const { Product, User } = require('../models');
+const { signToken } = require('../utils/auth');
 
 // Create the functions that fulfill the queries defined in `typeDefs.js`
 const resolvers = {
@@ -6,36 +8,36 @@ const resolvers = {
         products: async () => {
             // Get and return all documents from the products collection
             return await Product.find({});
-        }
+        },
+        user: async (parent, { userId }) => {
+            return Profile.findOne({ _id: userId });
+        },
+    },
+
+    // Define the functions that will fulfill the mutations
+    Mutation: {
+        createUser: async (parent, args) => {
+            const user = await User.create(args);
+            const token = signToken(user);
+            return { user, token };
+        },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError('Invalid credentials');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Invalid credentials');
+            }
+
+            const token = signToken(user);
+            return { user, token };
+        },
     }
-    //// Define the functions that will fulfill the mutations
-    // Mutation: {
-    //     createUser: async (parent, args) => {
-    //         const matchup = await User.create(args);
-    //         return matchup;
-    //     },
-    //     createVote: async (parent, { _id, productNum }) => {
-    //         const vote = await User.findOneAndUpdate(
-    //             { _id },
-    //             { $inc: { [`product${productNum}_votes`]: 1 } },
-    //             { new: true }
-    //         );
-    //         return vote;
-    //     },
-    //     addSchool: async (parent, { name, location, studentCount }) => {
-    //         // Create and return the new School object
-    //         return await School.create({ name, location, studentCount });
-    //     },
-    //     updateClass: async (parent, { id, building }) => {
-    //         // Find and update the matching class using the destructured args
-    //         return await Class.findOneAndUpdate(
-    //             { _id: id },
-    //             { building },
-    //             // Return the newly updated object instead of the original
-    //             { new: true }
-    //         );
-    //     }
-    // }
 };
 
 module.exports = resolvers;
