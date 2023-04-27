@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import FilterListIcon from '@mui/icons-material/FilterList';
@@ -11,10 +11,11 @@ import ProductCard from "../../components/Product/ProductCard";
 import NotFound from '../../components/Product/NotFound';
 
 const ProductList = (props) => {
+    const [sortState, setSortState] = useState();
+
     const { searchInput } = useParams();
 
     let products;
-
     if (props.category === "Search Results") {
         products = props.products.filter(product => Object.values(product).some(element => {
             if (element.toString().toLowerCase().includes(searchInput.toLowerCase())) {
@@ -29,6 +30,19 @@ const ProductList = (props) => {
     }
 
     const productsNum = products.length;
+
+    const handleSortChange = (e) => {
+        // setSortState(e.target.value)
+        // console.log(products);
+        // products.sort((a, b) => {
+        //     if (sortState === "newest") {
+        //         return parseInt(b.createdAt) - parseInt(a.createdAt);
+        //     }
+        //     else if (sortState === "price-high-to-low") {
+        //         return parseInt(b.price) - parseInt(a.price);
+        //     }
+        // })
+    }
 
     return (
         <section className="main-content-wrapper">
@@ -59,6 +73,7 @@ const ProductList = (props) => {
                                             borderBottom: "1px solid white",
                                         },
                                     }}
+                                    onChange={handleSortChange}
                                 >
                                     <option value="newest">Newest</option>
                                     <option value="price-high-to-low">Price High to Low</option>
