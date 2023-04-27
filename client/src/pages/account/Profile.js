@@ -3,16 +3,16 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { QUERY_SINGLE_PROFILE } from '../utils/queries';
+import { QUERY_SINGLE_USER } from '../../utils/queries';
 
 const Profile = () => {
-    const { profileId } = useParams();
+    const { userId } = useParams();
 
-    const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
-        variables: { profileId: profileId },
+    const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+        variables: { userId: userId },
     });
 
-    const profile = data?.profile || {};
+    const user = data?.user || {};
 
     if (loading) {
         return <div>Loading...</div>;
@@ -20,7 +20,7 @@ const Profile = () => {
     return (
         <div>
             <h2 className="card-header">
-                {profile.name}'s friends have endorsed these skills...
+                {user.firstName}
             </h2>
 
         </div>

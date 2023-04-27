@@ -6,7 +6,7 @@ const Footer = (props) => {
             <ul>
                 <li>© 2023 LuxBox</li>
                 <li>
-                    <Link to="/contact-us" className="link">
+                    <Link to="/support/contact-us" className="link">
                         Contact Us
                     </Link>
                 </li>
