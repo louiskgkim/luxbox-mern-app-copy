@@ -20,6 +20,7 @@ const Profile = () => {
     return (
         <div>
             <h2 className="card-header">
+                This is profile.
                 {user.firstName}
             </h2>
 

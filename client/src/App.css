@@ -1,5 +1,5 @@
-/* --- MOBILE FIRST DESIGN --- */
-/* --- GLOBAL STYLING */
+/***** MOBILE FIRST DESIGN *****/
+/* --- GLOBAL STYLING --- */
 :root {
   --light: #eeeeee;
   --medium: #b3afa9;
@@ -20,7 +20,26 @@
   position: relative;
 }
 
-/* --- Header component --- */
+.filled-btn {
+  width: 100%;
+  color: var(--light);
+  background-color: var(--dark);
+  padding: 0.7rem;
+  border: none;
+}
+
+.outlined-btn {
+  width: 100%;
+  color: var(--dark);
+  border: 1px solid var(--dark);
+  padding: 0.7rem;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/***** HEADER *****/
 header {
   display: flex;
   flex-direction: column;
@@ -31,7 +50,7 @@ header {
   transition: all 0.5s linear;
 }
 
-/* --- Banner component --- */
+/* --- Banner --- */
 .banner-wrapper {
   width: 100%;
   font-size: 0.8rem;
@@ -43,7 +62,7 @@ header {
   padding: 0.5rem 1rem;
 }
 
-/* --- Navigation component --- */
+/* --- Navigation --- */
 .header-nav {
   width: 100%;
   display: flex;
@@ -54,34 +73,31 @@ header {
 
 .header-nav-row {
   width: 100%;
+  color: var(--light);
+  background-color: var(--dark);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem 1rem;
 }
 
-.header-nav-row:nth-of-type(1) {
-  color: var(--light);
-  background-color: var(--dark);
-  padding: 1rem;
+.collapsible-main-menu-wrapper {
+  flex: 0 1 30%;
 }
 
-.collapsible-menu-container {
-  width: 30%;
-}
-
-.logo-container {
-  width: 40%;
+.logo-wrapper {
+  flex: 0 1 40%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.logo-container h1 {
-  font-size: 1.3rem;
+.logo-wrapper h1 {
+  margin: 0 1rem;
 }
 
-.account-container {
-  width: fit-content;
+.account-menu-wrapper {
+  flex: 0 1 30%;
   font-size: 0.8rem;
   display: flex;
   justify-content: flex-end;
@@ -89,40 +105,22 @@ header {
   gap: 0.5rem;
 }
 
-.login-status {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.header-nav-menu-with-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.1rem;
-  white-space: nowrap;
-}
-
-.header-nav-menu-with-icon:hover {
-  color: var(--medium);
-}
-
-.header-nav-menu-with-icon span {
+.horizontal-main-menu-wrapper {
   display: none;
 }
 
-.header-nav-row:nth-of-type(2) {
-  background-color: var(--dark);
-  padding: 0.5rem 1rem;
+.search-bar-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.expandable-menu-container {
-  display: none;
+/* --- MainMenu --- */
+.main-menu-wrapper {
+  margin: 0;
 }
 
-
-/* --- MainMenu component  */
 .main-menu {
   height: 100%;
   width: 0;
@@ -161,24 +159,32 @@ header {
   font-size: 2rem;
 }
 
-/* --- SearchBar component */
-.search-bar-wrapper {
-  width: 100%;
+/* --- AccountMenu --- */
+.login-status-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
 }
 
-.search-bar {
-  width: 100%;
+.header-nav-menu-with-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1rem;
+  white-space: nowrap;
 }
 
-.search-bar-input {
-  width: 100%;
+.header-nav-menu-with-icon:hover {
+  color: var(--medium);
+  cursor: pointer;
 }
 
+.header-nav-menu-with-icon span {
+  display: none;
+}
 
-/* --- Main component --- */
+/***** MAIN *****/
 main {
   height: 100%;
   display: flex;
@@ -188,8 +194,8 @@ main {
   padding-bottom: 2.5rem;
 }
 
-/* --- Home component --- */
-.home-wrapper {
+/* --- Home --- */
+.home-content-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -244,7 +250,7 @@ main {
   opacity: 0.8;
 }
 
-.shop-category-container {
+.product-category-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -253,7 +259,7 @@ main {
   gap: 1rem;
 }
 
-.shop-category {
+.product-category {
   width: 200px;
   height: 260px;
   display: flex;
@@ -262,21 +268,21 @@ main {
   justify-content: space-between;
 }
 
-.shop-category:hover {
+.product-category:hover {
   opacity: 0.8;
 }
 
-.shop-category img {
+.product-category img {
   width: 200px;
   height: 230px;
 }
 
-.shop-category h4 {
+.product-category h4 {
   height: 20px;
 }
 
-/* --- ProductList component --- */
-.main-content-wrapper {
+/* --- ProductList --- */
+.main-content-container {
   width: 100%;
   max-width: 1400px;
   display: flex;
@@ -302,11 +308,6 @@ main {
   font-weight: 300;
 }
 
-.side-product-filter-container {
-  display: none;
-}
-
-/* --- ProductFilterAndSort component --- */
 .product-filter-and-sort-wrapper {
   width: 100%;
   display: flex;
@@ -314,24 +315,27 @@ main {
   align-items: center;
 }
 
-.product-filter {
+.product-filter-wrapper {
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.product-filter-icon {
+.collapsible-product-filter {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-#products-num {
+.product-result-num {
   color: var(--medium-dark);
 }
 
-/* --- ProductCard component --- */
+.side-product-filter-wrapper {
+  display: none;
+}
+
 .product-card-column-wrapper {
   width: 100%;
   display: grid;
@@ -340,6 +344,7 @@ main {
   justify-content: space-between;
 }
 
+/* --- ProductCard --- */
 .product-card-column {
   width: 100%;
   display: flex;
@@ -394,7 +399,7 @@ main {
   font-weight: bold;
 }
 
-/* --- ProductDetail component --- */
+/* --- ProductDetail --- */
 .product-detail-wrapper {
   width: 100%;
   display: flex;
@@ -428,7 +433,7 @@ main {
   font-weight: bold;
 }
 
-.product-detail-btns {
+.product-detail-button-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -436,25 +441,6 @@ main {
   gap: 1rem;
 }
 
-.product-detail-add-to-bag-btn {
-  width: 100%;
-  color: var(--light);
-  background-color: var(--dark);
-  padding: 0.7rem;
-  border: none;
-}
-
-.product-detail-add-to-wishlist-btn {
-  width: 100%;
-  color: var(--dark);
-  border: 1px solid var(--dark);
-  padding: 0.7rem;
-}
-
-.product-detail-add-to-bag-btn:hover,
-.product-detail-add-to-wishlist-btn:hover {
-  opacity: 0.8;
-}
 
 /* --- NotFound component --- */
 .not-found-wrapper {
@@ -464,8 +450,8 @@ main {
 }
 
 /* --- Designers component --- */
-.designers-list {
-  width: 100%;
+.designer-list-content-wrapper {
+  width: 100%
 }
 
 /* --- Footer component --- */
@@ -491,12 +477,10 @@ footer ul li:nth-of-type(2):hover {
   text-decoration: underline;
 }
 
-
-
-
-/* For screens larger than 768px*/
 @media screen and (min-width: 768px) {
-  .main-content-wrapper {
+
+  /***** MAIN *****/
+  .main-content-container {
     padding: 0 3rem;
   }
 
@@ -505,53 +489,62 @@ footer ul li:nth-of-type(2):hover {
   }
 }
 
-/* For screens larger than 992px */
 @media screen and (min-width: 992px) {
+
+  /**** HEADER ****/
+  /* --- Banner --- */
   .banner-wrapper {
     font-size: 0.8rem;
     padding: 0.5rem 1rem;
   }
 
-  .collapsible-menu {
+  /* --- Navigation --- */
+  .header-nav-row {
+    padding: 1rem;
+  }
+
+  .collapsible-main-menu-wrapper .main-menu-wrapper {
     display: none;
   }
 
-  .logo-container h1 {
+  .logo-wrapper h1 {
     font-size: 2rem;
   }
 
-  .header-nav-row:nth-of-type(2) {
-    color: var(--light);
-    background-color: var(--dark);
-    padding-top: 0;
-  }
-
-  .header-nav-row:nth-of-type(2) {
-    display: flex;
-  }
-
-  .account-container {
+  .account-menu-wrapper {
     gap: 1.5rem;
   }
 
-  .login-status {
+  .header-nav-row:nth-of-type(2) {
+    padding: 0.5rem 1rem;
+    background-color: var(--dark);
+  }
+
+  .horizontal-main-menu-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-bar-wrapper {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* --- AccountMenu --- */
+  .login-status-wrapper {
     gap: 1.5rem;
   }
 
   .header-nav-menu-with-icon span {
     display: inline-block;
   }
-  .expandable-menu-container {
-    width: 100%;
-    height: 100%;
-    color: var(--light);
-    background-color: var(--dark);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
-  .main-menu-container {
+  /* --- MainMenu --- */
+  .main-menu-wrapper {
     width: 100%;
     color: var(--light);
     background-color: var(--dark);
@@ -585,14 +578,12 @@ footer ul li:nth-of-type(2):hover {
     display: none;
   }
 
-  #menu-icon {
+  #collapsible-menu-icon {
     display: none;
   }
 
-  .search-bar-wrapper {
-    width: 150px;
-  }
-
+  /***** MAIN *****/
+  /* --- Home --- */
   .just-landed img {
     position: relative;
     bottom: 15rem;
@@ -604,35 +595,34 @@ footer ul li:nth-of-type(2):hover {
     gap: 1rem;
   }
 
-  .shop-category-container {
+  .product-category-wrapper {
     width: 100vw;
     justify-content: center;
   }
 
-  .shop-category {
+  .product-category {
     width: 180px;
   }
 
-  .shop-category img {
+  .product-category img {
     width: 100%;
   }
 
-  .shop-category h4 {
+  .product-category h4 {
     font-size: 0.8rem;
   }
 
-
-  /* --- ProductList component --- */
+  /* --- ProductList --- */
   .main-content-row:nth-of-type(3) {
     align-items: flex-start;
     gap: 2rem;
   }
 
-  .product-filter-icon {
+  .collapsible-product-filter {
     display: none;
   }
 
-  .side-product-filter-container {
+  .side-product-filter-wrapper {
     display: block;
     width: 30%;
     font-size: 0.8rem;
@@ -655,7 +645,7 @@ footer ul li:nth-of-type(2):hover {
     text-decoration: underline;
   }
 
-  /* --- ProductDetail component --- */
+  /* --- ProductDetail --- */
   .product-detail-wrapper {
     flex-direction: row;
     justify-content: center;
@@ -672,7 +662,8 @@ footer ul li:nth-of-type(2):hover {
     width: 40%;
   }
 
-  .designers-list {
+  /* --- DesignerList --- */
+  .designer-list {
     width: 500px;
   }
 

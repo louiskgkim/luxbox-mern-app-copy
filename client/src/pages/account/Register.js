@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from '../utils/mutations';
+import { CREATE_USER } from '../../utils/mutations';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const Register = () => {
     const [formState, setFormState] = useState({
-        name: '',
         email: '',
         password: '',
+        firstName: '',
+        lastName: ''
     });
-    const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+    const [createUser, { error, data }] = useMutation(CREATE_USER);
 
-    // update state based on form input changes
+    // Update state based on form input changes
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -24,19 +25,19 @@ const Register = () => {
         });
     };
 
-    // submit form
+    // Submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState);
 
         try {
-            const { data } = await addProfile({
+            const { data } = await createUser({
                 variables: { ...formState },
             });
 
-            Auth.login(data.addProfile.token);
-        } catch (e) {
-            console.error(e);
+            Auth.login(data.createUser.token);
+        } catch (err) {
+            console.error(err);
         }
     };
 

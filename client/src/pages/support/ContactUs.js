@@ -4,7 +4,7 @@ import EmailForm from '../../components/forms/EmailForm';
 
 const ContactUs = (props) => {
     return (
-        <section className="main-content-wrapper">
+        <section className="main-content-container">
             <div className="main-content-row">
                 <h3>Contact Us</h3>
             </div>

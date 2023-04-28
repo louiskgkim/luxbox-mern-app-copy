@@ -47,7 +47,7 @@ const ProductList = (props) => {
     }
 
     return (
-        <section className="main-content-wrapper">
+        <section className="main-content-container">
             <div className="main-content-row">
                 <h3>{props.category}</h3>
             </div>
@@ -55,13 +55,13 @@ const ProductList = (props) => {
                 ? <Fragment>
                     <div className="main-content-row">
                         <div className="product-filter-and-sort-wrapper">
-                            <div className="product-filter">
-                                <div className="product-filter-icon">
+                            <div className="product-filter-wrapper">
+                                <div className="collapsible-product-filter">
                                     <FilterListIcon /><span>Filter</span>
                                 </div>
-                                <span id="products-num"> {productsNum} Results </span>
+                                <span className="product-result-num"> {productsNum} Results </span>
                             </div>
-                            <div className="product-sort">
+                            <div className="product-sort-wrapper">
                                 <NativeSelect
                                     defaultValue="Sort By"
                                     inputProps={{
@@ -85,7 +85,7 @@ const ProductList = (props) => {
                         </div>
                     </div>
                     <div className="main-content-row">
-                        <div className="side-product-filter-container">
+                        <div className="side-product-filter-wrapper">
                             <Accordion>
                                 <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}

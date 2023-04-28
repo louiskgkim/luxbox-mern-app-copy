@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
 
+import { formatCurrency } from '../../utils/formatters';
+
 const ProductCard = (props) => {
     return (
-        <Link
-            to={`/shop/product/${props.image}`}
-            className="link"
-            state={{ product: props }}
-        >
+        <Link to={`/shop/product/${props.image}`} className="link" state={{ product: props }}>
             <div className="product-card-column">
                 <div className="product-card">
                     <div className="product-card-header">
@@ -20,7 +18,7 @@ const ProductCard = (props) => {
                             {props.name}
                         </p>
                         <p className="product-card-price">
-                            ${props.price}
+                            {formatCurrency(props.price)}
                         </p>
                     </div>
                 </div>

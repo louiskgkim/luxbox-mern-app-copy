@@ -21,7 +21,7 @@ const MainMenu = (props) => {
     };
 
     return (
-        <div className="main-menu-container">
+        <div className="main-menu-wrapper">
             <ul className="main-menu" id="main-menu">
                 <li>
                     <Link to={undefined} className="main-menu-close-btn link" onClick={closeSideNav}>&times;</Link>
@@ -54,7 +54,7 @@ const MainMenu = (props) => {
                     <Link to="/shop/sale" className="link">Sale</Link>
                 </li>
             </ul>
-            <MenuIcon id="menu-icon" onClick={openSideNav} />
+            <MenuIcon id="collapsible-menu-icon" onClick={openSideNav} />
         </div>
     );
 };

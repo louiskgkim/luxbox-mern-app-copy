@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../../utils/queries';
 
 import Home from '../../../pages/home';
 import Profile from '../../../pages/account/Profile';
+import Login from '../../../pages/account/Login';
+import Register from '../../../pages/account/Register';
+import Wishlist from '../../../pages/account/wishlist';
+import ShoppingBag from '../../../pages/account/shopping-bag';
+import DesignerList from '../../../pages/shop/DesignerList';
 import ProductList from '../../../pages/shop/ProductList';
 import ProductDetail from '../../../pages/shop/ProductDetail';
-import DesignerList from '../../../pages/shop/DesignerList';
 import ContactUs from '../../../pages/support/ContactUs';
 import Error from '../../../pages/support/Error';
 
@@ -28,6 +33,10 @@ const Main = (props) => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/account" element={<Profile />} />
+                <Route path="/account/sign-in" element={<Login />} />
+                <Route path="/account/register" element={<Register />} />
+                <Route path="/account/wishlist" element={<Wishlist />} />
+                <Route path="/account/shopping-bag" element={<ShoppingBag />} />
                 <Route path="/shop/new-in" element={<ProductList category="New In" products={allProducts} />} />
                 <Route path="/shop/designers" element={<DesignerList category="Designers" products={allProducts} />} />
                 <Route path="/shop/clothing" element={<ProductList category="Clothing" products={clothingProducts} />} />

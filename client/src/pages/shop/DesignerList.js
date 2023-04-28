@@ -1,5 +1,4 @@
 import AlphabetList from '../../utils/AlphabetList';
-import { Link } from 'react-router-dom';
 
 const DesignerList = (props) => {
     let designers = [];
@@ -18,19 +17,21 @@ const DesignerList = (props) => {
                 <h3>{props.category}</h3>
             </div>
             <div className="main-content-row">
-                <AlphabetList
-                    className="designers-list"
-                    data={designers}
-                    generateFn={
-                        (item, index) => {
-                            return (
-                                <div key={item}>
-                                    {item}
-                                </div>
-                            )
+                <div className="designer-list-content-wrapper">
+                    <AlphabetList
+                        className="designer-list"
+                        data={designers}
+                        generateFn={
+                            (item, index) => {
+                                return (
+                                    <div key={item}>
+                                        {item}
+                                    </div>
+                                )
+                            }
                         }
-                    }
-                />
+                    />
+                </div>
             </div>
         </section >
     );
