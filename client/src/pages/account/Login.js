@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { useMutation } from '@apollo/client';
+
 import { LOGIN_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
+
+import FormGroup from '@mui/material/FormGroup';
+import InputLabel from '@mui/material/InputLabel';
+import Input from '@mui/material/Input';
+import FormHelperText from '@mui/material/FormHelperText';
 
 const Login = (props) => {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, { error, data }] = useMutation(LOGIN_USER);
 
-    // update state based on form input changes
+    const navigate = useNavigate("/");
+
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -19,21 +27,19 @@ const Login = (props) => {
         });
     };
 
-    // submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
+
         try {
             const { data } = await login({
                 variables: { ...formState },
             });
 
             Auth.login(data.login.token);
-        } catch (e) {
-            console.error(e);
+        } catch (err) {
+            console.error(err);
         }
 
-        // clear form values
         setFormState({
             email: '',
             password: '',
@@ -46,52 +52,65 @@ const Login = (props) => {
                 <h3>Sign in</h3>
             </div>
             <div className="main-content-row">
-
-                <div className="card">
-                    <h4 className="card-header bg-dark text-light p-2">Login</h4>
-                    <div className="card-body">
-                        {data ? (
-                            <p>
-                                Success! You may now head{' '}
-                                <Link to="/">back to the homepage.</Link>
-                            </p>
-                        ) : (
-                            <form onSubmit={handleFormSubmit}>
-                                <input
-                                    className="form-input"
-                                    placeholder="Your email"
-                                    name="email"
-                                    type="email"
-                                    value={formState.email}
-                                    onChange={handleChange}
-                                />
-                                <input
-                                    className="form-input"
-                                    placeholder="******"
-                                    name="password"
-                                    type="password"
-                                    value={formState.password}
-                                    onChange={handleChange}
-                                />
-                                <button
-                                    className="btn btn-block btn-info"
-                                    style={{ cursor: 'pointer' }}
-                                    type="submit"
-                                >
-                                    Submit
-                                </button>
+                {data
+                    ? (
+                        <p>test</p>
+                    )
+                    : (
+                        <div className="login-form-wrapper">
+                            <form className="login-form" onSubmit={handleFormSubmit}>
+                                <FormGroup className="form-group">
+                                    <InputLabel htmlFor="login-email" sx={{ fontSize: "small" }}>Email</InputLabel>
+                                    <Input
+                                        className="form-input"
+                                        id="login-email"
+                                        aria-describedby="login-email-desc"
+                                        placeholder="Enter your email."
+                                        name="email"
+                                        type="email"
+                                        value={formState.email}
+                                        sx={{
+                                            fontSize: "small"
+                                        }}
+                                        onChange={handleChange}
+                                    />
+                                    <FormHelperText className="form-helper-text" id="login-email-desc">*Guest ID: guest@gmail.com</FormHelperText>
+                                </FormGroup>
+                                <FormGroup className="form-group">
+                                    <InputLabel htmlFor="login-pw" sx={{ fontSize: "small" }}>Password</InputLabel>
+                                    <Input
+                                        className="form-input"
+                                        id="login-pw"
+                                        aria-describedby="login-pw-desc"
+                                        placeholder="******"
+                                        name="password"
+                                        type="password"
+                                        value={formState.password}
+                                        sx={{
+                                            fontSize: "small"
+                                        }}
+                                        onChange={handleChange}
+                                    />
+                                    <FormHelperText className="form-helper-text" id="login-pw-desc">*Guest PW: 1234</FormHelperText>
+                                </FormGroup>
+                                <button className="filled-btn" type="submit">Sign In</button>
                             </form>
-                        )}
-
-                        {error && (
-                            <div className="my-3 p-3 bg-danger text-white">
-                                {error.message}
+                            <div className="link-to-register-wrapper">
+                                <p>Don't have an account?</p>
+                                <Link to="/account/register" className="link">
+                                    <button className="outlined-btn" id="create-account-btn">Create Account</button>
+                                </Link>
                             </div>
-                        )}
+                        </div>
+                    )
+                }
+                {error && (
+                    <div>
+                        {error.message}
                     </div>
-                </div>
+                )}
             </div>
-        </section>
+        </section >
     );
 };
 

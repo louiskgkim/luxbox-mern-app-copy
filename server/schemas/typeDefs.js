@@ -32,8 +32,8 @@ const typeDefs = gql`
   # Define which queries the front end is allowed to make and what data is returned
   type Query {
     products: [Product]
-    users: [User]!
     user(userId: ID!): User
+    me: User
   }
 
   # Define which mutations the client is allowed to make

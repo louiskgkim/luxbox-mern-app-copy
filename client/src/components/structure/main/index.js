@@ -5,16 +5,9 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../../utils/queries';
 
 import Home from '../../../pages/home';
-import Profile from '../../../pages/account/Profile';
-import Login from '../../../pages/account/Login';
-import Register from '../../../pages/account/Register';
-import Wishlist from '../../../pages/account/wishlist';
-import ShoppingBag from '../../../pages/account/shopping-bag';
-import DesignerList from '../../../pages/shop/DesignerList';
-import ProductList from '../../../pages/shop/ProductList';
-import ProductDetail from '../../../pages/shop/ProductDetail';
-import ContactUs from '../../../pages/support/ContactUs';
-import Error from '../../../pages/support/Error';
+import { Profile, Login, Register, Wishlist, ShoppingBag } from '../../../pages/account';
+import { DesignerList, ProductList, ProductDetail } from '../../../pages/shop';
+import { ContactUs, Error } from '../../../pages/support';
 
 const Main = (props) => {
     const { loading, data } = useQuery(QUERY_PRODUCTS);

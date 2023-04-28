@@ -12,7 +12,7 @@ const DesignerList = (props) => {
     designers.sort();
 
     return (
-        <section className="main-content-wrapper">
+        <section className="main-content-container">
             <div className="main-content-row">
                 <h3>{props.category}</h3>
             </div>

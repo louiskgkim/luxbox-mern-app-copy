@@ -12,6 +12,13 @@ const resolvers = {
         user: async (parent, { userId }) => {
             return User.findOne({ userId });
         },
+        // By adding context to our query, we can retrieve the logged in user without specifically searching for them
+        me: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id });
+            }
+            throw new AuthenticationError('You need to be logged in.');
+        },
     },
 
     // Define the functions that will fulfill the mutations

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
@@ -6,16 +6,19 @@ import { CREATE_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
+import FormGroup from '@mui/material/FormGroup';
+import InputLabel from '@mui/material/InputLabel';
+import Input from '@mui/material/Input';
+
 const Register = () => {
     const [formState, setFormState] = useState({
-        email: '',
-        password: '',
         firstName: '',
-        lastName: ''
+        lastName: '',
+        email: '',
+        password: ''
     });
     const [createUser, { error, data }] = useMutation(CREATE_USER);
 
-    // Update state based on form input changes
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -25,10 +28,8 @@ const Register = () => {
         });
     };
 
-    // Submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
 
         try {
             const { data } = await createUser({
@@ -42,61 +43,90 @@ const Register = () => {
     };
 
     return (
-        <main className="flex-row justify-center mb-4">
-            <div className="col-12 col-lg-10">
-                <div className="card">
-                    <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-                    <div className="card-body">
-                        {data ? (
-                            <p>
-                                Success! You may now head{' '}
-                                <Link to="/">back to the homepage.</Link>
-                            </p>
-                        ) : (
-                            <form onSubmit={handleFormSubmit}>
-                                <input
-                                    className="form-input"
-                                    placeholder="Your username"
-                                    name="name"
-                                    type="text"
-                                    value={formState.name}
-                                    onChange={handleChange}
-                                />
-                                <input
-                                    className="form-input"
-                                    placeholder="Your email"
-                                    name="email"
-                                    type="email"
-                                    value={formState.email}
-                                    onChange={handleChange}
-                                />
-                                <input
-                                    className="form-input"
-                                    placeholder="******"
-                                    name="password"
-                                    type="password"
-                                    value={formState.password}
-                                    onChange={handleChange}
-                                />
-                                <button
-                                    className="btn btn-block btn-info"
-                                    style={{ cursor: 'pointer' }}
-                                    type="submit"
-                                >
-                                    Submit
-                                </button>
-                            </form>
-                        )}
-
-                        {error && (
-                            <div className="my-3 p-3 bg-danger text-white">
-                                {error.message}
-                            </div>
-                        )}
-                    </div>
-                </div>
+        <section className="main-content-container">
+            <div className="main-content-row">
+                <h3>Register</h3>
             </div>
-        </main>
+            <div className="main-content-row">
+                {data
+                    ? (
+                        <p>test</p>
+                    )
+                    : (
+                        <div className="register-form-wrapper">
+                            <form className="register-form" onSubmit={handleFormSubmit}>
+                                <FormGroup className="form-group">
+                                    <InputLabel htmlFor="register-first-name" sx={{ fontSize: "small" }}>First Name</InputLabel>
+                                    <Input
+                                        className="form-input"
+                                        id="register-first-name"
+                                        placeholder="Enter your first name."
+                                        name="firstName"
+                                        type="text"
+                                        value={formState.firstName}
+                                        sx={{
+                                            fontSize: "small"
+                                        }}
+                                        onChange={handleChange}
+                                    />
+                                </FormGroup>
+                                <FormGroup className="form-group">
+                                    <InputLabel htmlFor="register-last-name" sx={{ fontSize: "small" }}>Last Name</InputLabel>
+                                    <Input
+                                        className="form-input"
+                                        id="register-last-name"
+                                        placeholder="Enter your last name."
+                                        name="lastName"
+                                        type="text"
+                                        value={formState.lastName}
+                                        sx={{
+                                            fontSize: "small"
+                                        }}
+                                        onChange={handleChange}
+                                    />
+                                </FormGroup>
+                                <FormGroup className="form-group">
+                                    <InputLabel htmlFor="register-email" sx={{ fontSize: "small" }}>Email</InputLabel>
+                                    <Input
+                                        className="form-input"
+                                        id="register-email"
+                                        placeholder="Enter your email."
+                                        name="email"
+                                        type="email"
+                                        value={formState.email}
+                                        sx={{
+                                            fontSize: "small"
+                                        }}
+                                        onChange={handleChange}
+                                    />
+                                </FormGroup>
+                                <FormGroup className="form-group">
+                                    <InputLabel htmlFor="register-pw" sx={{ fontSize: "small" }}>Password</InputLabel>
+                                    <Input
+                                        className="form-input"
+                                        id="register-pw"
+                                        placeholder="Enter at least 4 characters."
+                                        name="password"
+                                        type="password"
+                                        value={formState.password}
+                                        sx={{
+                                            fontSize: "small"
+                                        }}
+                                        onChange={handleChange}
+                                    />
+                                </FormGroup>
+                                <button className="filled-btn" type="submit">Sign In</button>
+                            </form>
+                        </div>
+                    )
+                }
+                {error && (
+                    <div>
+                        {error.message}
+                    </div>
+                )}
+            </div>
+        </section >
     );
 };
 
