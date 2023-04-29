@@ -1,15 +1,39 @@
+import { useEffect } from 'react';
+
 import AlphabetList from '../../utils/AlphabetList';
 
+import { useQuery } from '@apollo/client';
+import { useStoreContext } from '../../utils/GlobalState';
+import { UPDATE_DESIGNERS, } from '../../utils/actions';
+import { QUERY_DESIGNERS, } from '../../utils/queries';
+import { idbPromise } from '../../utils/helpers';
+
 const DesignerList = (props) => {
-    let designers = [];
+    const [state, dispatch] = useStoreContext();
 
-    props.products.forEach((product) => {
-        if (!designers.includes(product.designer)) {
-            designers.push(product.designer)
+    const { loading, data: designerData } = useQuery(QUERY_DESIGNERS);
+
+    useEffect(() => {
+        if (designerData) {
+            dispatch({
+                type: UPDATE_DESIGNERS,
+                designers: designerData.designers,
+            });
+            designerData.designers.forEach((product) => {
+                idbPromise('designers', 'put', product);
+            });
+        } else if (!loading) {
+            idbPromise('designers', 'get').then((designers) => {
+                dispatch({
+                    type: UPDATE_DESIGNERS,
+                    designers: designers,
+                });
+            });
         }
-    })
 
-    designers.sort();
+    }, [designerData, loading, dispatch]);
+
+    let designerNames = state.designers.map((designer) => designer.name);
 
     return (
         <section className="main-content-container">
@@ -20,7 +44,7 @@ const DesignerList = (props) => {
                 <div className="designer-list-content-wrapper">
                     <AlphabetList
                         className="designer-list"
-                        data={designers}
+                        data={(designerNames)}
                         generateFn={
                             (item, index) => {
                                 return (

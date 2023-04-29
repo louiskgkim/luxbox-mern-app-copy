@@ -16,6 +16,8 @@ const SearchBar = (props) => {
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         navigate(`/shop/search/${searchInput}`);
+
+        setSearchInput('');
     }
 
     return (
@@ -50,6 +52,7 @@ const SearchBar = (props) => {
                         borderBottom: "1px solid white",
                     },
                 }}
+                value={searchInput}
                 onChange={handleSearchChange}
             />
         </form>

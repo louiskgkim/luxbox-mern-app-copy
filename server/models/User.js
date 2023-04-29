@@ -1,9 +1,18 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
-const uniqueValidator = require('mongoose-unique-validator');
+const Order = require('./Order');
 
 const userSchema = new Schema({
+    firstName: {
+        type: String,
+        required: [true, "First name is required."],
+        trim: true
+    },
+    lastName: {
+        type: String,
+        required: [true, "Last name is required."],
+        trim: true
+    },
     email: {
         type: String,
         required: [true, "Email is required."],
@@ -18,14 +27,7 @@ const userSchema = new Schema({
         required: [true, "Password is required."],
         minlength: [4, "Password must be at least {MINLENGTH} characters long."]
     },
-    firstName: {
-        type: String,
-        required: [true, "First name is required."],
-    },
-    lastName: {
-        type: String,
-        required: [true, "Last name is required."]
-    }
+    orders: [Order.schema]
 }, { timestamps: true });
 
 // Set up pre-save middleware to create password
@@ -44,10 +46,8 @@ userSchema.pre("save", async function (next) {
 
 // Compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
-    return bcrypt.compare(password, this.password);
+    return await bcrypt.compare(password, this.password);
 };
-
-userSchema.plugin(uniqueValidator, { message: '\'{VALUE}\' is already in use. Try another name.' });
 
 const User = model('User', userSchema);
 

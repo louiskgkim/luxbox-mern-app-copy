@@ -1,8 +1,28 @@
-import React, { Fragment, useState } from 'react';
+import { useEffect, Fragment, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import ProductCard from '../../components/product/ProductCard';
-import NotFound from '../../components/product/NotFound';
+import { useQuery } from '@apollo/client';
+import { useStoreContext } from '../../utils/GlobalState';
+import {
+    UPDATE_PRODUCTS,
+    UPDATE_CATEGORIES,
+    UPDATE_CURRENT_CATEGORY,
+    UPDATE_DESIGNERS,
+    UPDATE_CURRENT_DESIGNER,
+    UPDATE_COLORS,
+    UPDATE_CURRENT_COLOR
+} from '../../utils/actions';
+import {
+    QUERY_PRODUCTS,
+    QUERY_CATEGORIES,
+    QUERY_DESIGNERS,
+    QUERY_COLORS
+} from '../../utils/queries';
+import { idbPromise } from '../../utils/helpers';
+import { formatCategoryName } from '../../utils/formatters';
+
+import ProductCard from '../../components/Product/ProductCard';
+import NotFound from '../../components/Product/NotFound';
 
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -11,27 +31,88 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 
-
 const ProductList = (props) => {
-    const [sortState, setSortState] = useState();
 
-    const { searchInput } = useParams();
+    const { categoryParam, searchInputParam } = useParams();
 
-    let products;
-    if (props.category === "Search Results") {
-        products = props.products.filter(product => Object.values(product).some(element => {
-            if (element.toString().toLowerCase().includes(searchInput.toLowerCase())) {
-                return true;
-            }
-            return false;
+    const [state, dispatch] = useStoreContext();
+
+    const { currentCategory, currentDesigner, currentColor } = state;
+
+    const { loading, data: productData } = useQuery(QUERY_PRODUCTS);
+    const { data: categoryData } = useQuery(QUERY_CATEGORIES);
+
+    useEffect(() => {
+        if (categoryData) {
+            dispatch({
+                type: UPDATE_CATEGORIES,
+                categories: categoryData.categories,
+            });
+            categoryData.categories.forEach((category) => {
+                idbPromise('categories', 'put', category);
+
+                if (category.name === categoryParam) {
+                    dispatch({
+                        type: UPDATE_CURRENT_CATEGORY,
+                        currentCategory: category._id,
+                    });
+                }
+            });
+        } else if (!loading) {
+            idbPromise('categories', 'get').then((categories) => {
+                dispatch({
+                    type: UPDATE_CATEGORIES,
+                    categories: categories,
+                });
+            });
         }
-        ))
-    }
-    else {
-        products = props.products;
-    }
+    }, [categoryData, loading, dispatch, categoryParam]);
 
-    const productsNum = products.length;
+    useEffect(() => {
+        if (productData) {
+            dispatch({
+                type: UPDATE_PRODUCTS,
+                products: productData.products,
+            });
+            productData.products.forEach((product) => {
+                idbPromise('products', 'put', product);
+            });
+        } else if (!loading) {
+            idbPromise('products', 'get').then((products) => {
+                dispatch({
+                    type: UPDATE_PRODUCTS,
+                    products: products,
+                });
+            });
+        }
+    }, [productData, loading, dispatch]);
+
+    const filterProducts = () => {
+        if (props.category === "New In") {
+            return state.products;
+        }
+        else if (props.category === "Sale") {
+            return state.products.filter((product) => product.onSale === "true")
+        }
+        else if (searchInputParam) {
+            const hasSearchInput = (product) => {
+                if (
+                    product.category.name.toLowerCase().includes(searchInputParam.toLowerCase())
+                    ||
+                    product.color.name.toLowerCase().includes(searchInputParam.toLowerCase())
+                    ||
+                    product.designer.name.toLowerCase().includes(searchInputParam.toLowerCase())
+                    ||
+                    product.name.toLowerCase().includes(searchInputParam.toLowerCase())
+                ) {
+                    return true;
+                }
+                return false;
+            }
+            return state.products.filter(hasSearchInput);
+        }
+        return state.products.filter((product) => product.category._id === currentCategory);
+    }
 
     const handleSortChange = (e) => {
         // setSortState(e.target.value)
@@ -49,10 +130,16 @@ const ProductList = (props) => {
     return (
         <section className="main-content-container">
             <div className="main-content-row">
-                <h3>{props.category}</h3>
+                <h3>
+                    {searchInputParam && `Search Results for "${searchInputParam}"`}
+                    {props.category
+                        ? props.category
+                        : formatCategoryName(categoryParam)
+                    }
+                </h3>
             </div>
             <div className="main-content-row">
-                {products
+                {state.products
                     ? (
                         <Fragment>
                             <div className="product-filter-and-sort-wrapper">
@@ -60,7 +147,7 @@ const ProductList = (props) => {
                                     <div className="collapsible-product-filter">
                                         <FilterListIcon /><span>Filter</span>
                                     </div>
-                                    <span className="product-result-num"> {productsNum} Results </span>
+                                    <span className="product-result-num"> {filterProducts().length} Results </span>
                                 </div>
                                 <div className="product-sort-wrapper">
                                     <NativeSelect
@@ -160,47 +247,19 @@ const ProductList = (props) => {
                                             </p>
                                         </AccordionDetails>
                                     </Accordion>
-                                    <Accordion>
-                                        <AccordionSummary
-                                            expandIcon={<ExpandMoreIcon />}
-                                            aria-controls="panel4a-content"
-                                            id="panel4a-header"
-                                        >
-                                            <p>CLOTHING SIZE</p>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                            <p>
-                                            </p>
-                                        </AccordionDetails>
-                                    </Accordion>
-                                    <Accordion>
-                                        <AccordionSummary
-                                            expandIcon={<ExpandMoreIcon />}
-                                            aria-controls="panel5a-content"
-                                            id="panel5a-header"
-                                        >
-                                            <p>SHOE SIZE</p>
-                                        </AccordionSummary>
-                                        <AccordionDetails>
-                                            <p>
-                                            </p>
-                                        </AccordionDetails>
-                                    </Accordion>
                                 </div>
-                                {products.length > 0
+                                {state.products.length > 0
                                     ? (<div className="product-card-column-wrapper">
-                                        {products.map((product, i) => {
+                                        {filterProducts().map((product, i) => {
                                             return (
                                                 <ProductCard
                                                     key={i}
                                                     image={product.image}
-                                                    designer={product.designer}
-                                                    category={product.category}
-                                                    subCategory={product.subCategory}
+                                                    designer={product.designer.name}
+                                                    category={product.category.name}
                                                     name={product.name}
                                                     price={product.price}
-                                                    color={product.color}
-                                                    description={product.description}
+                                                    color={product.color.name}
                                                     onSale={product.onSale}
                                                 />
                                             )

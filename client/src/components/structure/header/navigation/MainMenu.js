@@ -55,7 +55,7 @@ const MainMenu = (props) => {
                 </li>
             </ul>
             <MenuIcon id="collapsible-menu-icon" onClick={openSideNav} />
-        </div>
+        </div >
     );
 };
 

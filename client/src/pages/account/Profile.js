@@ -3,12 +3,12 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { QUERY_SINGLE_USER } from '../../utils/queries';
+import { QUERY_USER } from '../../utils/queries';
 
 const Profile = () => {
     const { userId } = useParams();
 
-    const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+    const { loading, data } = useQuery(QUERY_USER, {
         variables: { userId: userId },
     });
 

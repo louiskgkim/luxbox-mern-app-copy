@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import EmailForm from '../../components/forms/EmailForm';
+import EmailForm from '../../components/Forms/EmailForm';
 
 const ContactUs = (props) => {
     return (
