@@ -50,7 +50,7 @@ const DesignerList = (props) => {
                             (item, index) => {
                                 return (
                                     <div key={item}>
-                                        <Link to={`/shop/designers/${item}}`} className="link">
+                                        <Link to={`/shop/designers/${item}`} className="link">
                                             {item}
                                         </Link>
                                     </div>

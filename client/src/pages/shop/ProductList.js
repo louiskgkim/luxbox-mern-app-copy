@@ -32,7 +32,9 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 
 const ProductList = (props) => {
 
-    const { categoryParam, searchInputParam } = useParams();
+    const { categoryParam, searchInputParam, designerParam } = useParams();
+
+    const formattedDesignerName = designerParam.replace("%20", " ");
 
     const [state, dispatch] = useStoreContext();
 
@@ -91,7 +93,7 @@ const ProductList = (props) => {
             return state.products;
         }
         else if (props.category === "Sale") {
-            return state.products.filter((product) => product.onSale === "true")
+            return state.products.filter((product) => product.onSale === "true");
         }
         else if (searchInputParam) {
             const searchWordsArr = searchInputParam.trim().toLowerCase().split(" ");
@@ -101,7 +103,10 @@ const ProductList = (props) => {
                 const productValsArr = Object.values(flattenedProductObj);
 
                 return searchWordsArr.every(searchWord => productValsArr.includes(searchWord));
-            })
+            });
+        }
+        else if (designerParam) {
+            return state.products.filter((product) => product.designer.name === formattedDesignerName);
         }
         return state.products.filter((product) => product.category._id === currentCategory);
     }
@@ -124,6 +129,7 @@ const ProductList = (props) => {
             <div className="main-content-row">
                 <h3>
                     {searchInputParam && `Search Results for "${searchInputParam}"`}
+                    {designerParam && `Designer: ${formattedDesignerName}`}
                     {props.category
                         ? props.category
                         : formatCategoryName(categoryParam)

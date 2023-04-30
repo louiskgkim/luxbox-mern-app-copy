@@ -49,7 +49,7 @@ class AlphabetList extends Component {
                     ...(style ? style : {})
                 }}
             >
-                <div
+                {/* <div
                     style={{
                         position: 'absolute',
                         right: '0',
@@ -81,7 +81,7 @@ class AlphabetList extends Component {
                             })
                         }
                     </div>
-                </div>
+                </div> */}
                 <div
                     style={{
                         width: '100%',
