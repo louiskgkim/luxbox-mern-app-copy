@@ -42,6 +42,37 @@ button:hover {
   opacity: 0.8;
 }
 
+.outlined-box {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--medium);
+  padding: 1rem;
+}
+
+.outlined-box-body {
+  height: 60px;
+  border-bottom: 1px solid var(--medium);
+}
+
+.outlined-box-body p {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.outlined-box-footer p {
+  width: fit-content;
+  font-size: 0.8rem;
+}
+
+.outlined-box-footer p:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
 /***** HEADER *****/
 header {
   display: flex;
@@ -99,7 +130,7 @@ header {
   margin: 0 1rem;
 }
 
-.account-menu-wrapper {
+.header-account-menu-wrapper {
   flex: 0 1 30%;
   font-size: 0.8rem;
   display: flex;
@@ -197,6 +228,41 @@ main {
   padding-bottom: 2.5rem;
 }
 
+/* --- Account --- */
+.account-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main-account-menu-wrapper {
+  width: 100%;
+}
+
+.MuiAccordion-root .MuiAccordionSummary-content p {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.MuiAccordionDetails-root ul {
+  font-size: 0.8rem;
+}
+
+.MuiAccordionDetails-root li {
+  padding: 0.5rem 0;
+}
+
+.MuiAccordionDetails-root ul li:hover {
+  text-decoration: underline;
+}
+
+.account-content-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /* --- Login & Register --- */
 .account-form-wrapper {
   width: 100%;
@@ -233,6 +299,14 @@ main {
 .switch-account-form-wrapper p {
   text-align: center;
   font-size: 0.9rem;
+}
+
+/* --- AccountDetail --- */
+.account-detail-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 /* --- Home --- */
@@ -560,7 +634,7 @@ footer ul li:nth-of-type(2):hover {
     font-size: 2rem;
   }
 
-  .account-menu-wrapper {
+  .header-account-menu-wrapper {
     gap: 1.5rem;
   }
 
@@ -632,9 +706,27 @@ footer ul li:nth-of-type(2):hover {
   }
 
   /***** MAIN *****/
+  /* --- Account --- */
+  .account-wrapper {
+    flex-direction: row;
+  }
+
+  .main-account-menu-wrapper {
+    width: 30%;
+  }
+
   /* --- Login & Register --- */
   .account-form-wrapper {
     width: 500px;
+  }
+
+  /* --- AccountDetail --- */
+  .account-detail-wrapper {
+    flex-direction: row;
+  }
+
+  .account-detail-wrapper .outlined-box {
+    flex: 0 1 50%;
   }
 
   /* --- Home --- */
@@ -680,23 +772,6 @@ footer ul li:nth-of-type(2):hover {
     display: block;
     width: 30%;
     font-size: 0.8rem;
-  }
-
-  .MuiAccordion-root .MuiAccordionSummary-content p {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-  }
-
-  .MuiAccordionDetails-root ul {
-    font-size: 0.8rem;
-  }
-
-  .MuiAccordionDetails-root li {
-    padding: 0.5rem 0;
-  }
-
-  .MuiAccordionDetails-root ul li:hover {
-    text-decoration: underline;
   }
 
   /* --- ProductDetail --- */

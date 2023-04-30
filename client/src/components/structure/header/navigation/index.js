@@ -16,7 +16,7 @@ const Navigation = (props) => {
                         <h1>LuxBox</h1>
                     </Link>
                 </div>
-                <div className="account-menu-wrapper">
+                <div className="header-account-menu-wrapper">
                     <AccountMenu />
                 </div>
             </div>

@@ -1,9 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Home from '../../../pages/Home';
-import { Profile, Login, Register, Wishlist, ShoppingBag } from '../../../pages/Account';
+import Account from '../../../pages/Account';
+import Login from '../../../pages/Account/Login';
+import Register from '../../../pages/Account/Register';
+import Wishlist from '../../../pages/Account/Wishlist';
+import ShoppingBag from '../../../pages/Account/ShoppingBag';
 import { DesignerList, ProductList, ProductDetail } from '../../../pages/Shop';
 import { ContactUs, Error } from '../../../pages/Support';
+import AccountDetail from '../../Account/AccountDetail';
+import OrderHistory from '../../Account/OrderHistory';
 
 const Main = (props) => {
 
@@ -11,9 +17,10 @@ const Main = (props) => {
         <main>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/account" element={<Profile />} />
+                <Route path="/account" element={<Account />} />
                 <Route path="/account/sign-in" element={<Login />} />
                 <Route path="/account/register" element={<Register />} />
+                <Route path="/account/orders" element={<OrderHistory />} />
                 <Route path="/account/wishlist" element={<Wishlist />} />
                 <Route path="/account/shopping-bag" element={<ShoppingBag />} />
                 <Route path="/shop/new-in" element={<ProductList category="New In" />} />

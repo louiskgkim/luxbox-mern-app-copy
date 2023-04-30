@@ -34,7 +34,11 @@ const ProductList = (props) => {
 
     const { categoryParam, searchInputParam, designerParam } = useParams();
 
-    const formattedDesignerName = designerParam.replace("%20", " ");
+    let formattedDesignerName;
+
+    if (designerParam) {
+        formattedDesignerName = designerParam.replace("%20", " ");
+    };
 
     const [state, dispatch] = useStoreContext();
 
