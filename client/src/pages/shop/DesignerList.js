@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import AlphabetList from '../../utils/AlphabetList';
 
@@ -49,7 +50,9 @@ const DesignerList = (props) => {
                             (item, index) => {
                                 return (
                                     <div key={item}>
-                                        {item}
+                                        <Link to={`/shop/designers/${item}}`} className="link">
+                                            {item}
+                                        </Link>
                                     </div>
                                 )
                             }

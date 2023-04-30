@@ -44,11 +44,44 @@ class AlphabetList extends Component {
             <div
                 className={className}
                 style={{
-                    position: 'static',
-                    display: 'flex',
+                    position: 'relative',
+                    width: '100%',
                     ...(style ? style : {})
                 }}
             >
+                <div
+                    style={{
+                        position: 'absolute',
+                        right: '0',
+                        width: 'fit-content',
+                    }}
+                >
+                    <div
+                        style={{
+                            position: 'fixed',
+                        }}
+                    >
+                        {
+                            keyArr.map(item => {
+                                return (
+                                    <div
+                                        key={item}
+                                        style={{
+                                            fontSize: '0.7rem',
+                                            verticalAlign: 'top',
+                                            cursor: 'pointer',
+                                            color: '#151515',
+                                            padding: '0.2rem 0',
+                                        }}
+                                        onClick={() => { this.handleAlphaClick(item) }}
+                                    >
+                                        {item}
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
                 <div
                     style={{
                         width: '100%',
@@ -75,34 +108,6 @@ class AlphabetList extends Component {
                                     </AlphabetItem>
                                 )
                             }
-                        })
-                    }
-
-                </div>
-                <div
-                    style={{
-                        position: 'relative',
-                        top: '0',
-                        right: '0',
-                    }}
-                >
-                    {
-                        keyArr.map(item => {
-                            return (
-                                <div
-                                    key={item}
-                                    style={{
-                                        fontSize: '0.7rem',
-                                        verticalAlign: 'top',
-                                        cursor: 'pointer',
-                                        color: '#151515',
-                                        padding: '0.2rem 0',
-                                    }}
-                                    onClick={() => { this.handleAlphaClick(item) }}
-                                >
-                                    {item}
-                                </div>
-                            )
                         })
                     }
                 </div>

@@ -18,6 +18,7 @@ const Main = (props) => {
                 <Route path="/account/shopping-bag" element={<ShoppingBag />} />
                 <Route path="/shop/new-in" element={<ProductList category="New In" />} />
                 <Route path="/shop/designers" element={<DesignerList category="Designers"/>} />
+                <Route path="/shop/designers/:designerParam" element={<ProductList />} />
                 <Route path="/shop/sale" element={<ProductList category="Sale"/>} />
                 <Route path="/shop/search/:searchInputParam" element={<ProductList />} />
                 <Route path="/shop/product/:id" element={<ProductDetail />} />
