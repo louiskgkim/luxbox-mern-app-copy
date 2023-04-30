@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
@@ -40,6 +40,14 @@ const Register = () => {
             console.error(err);
         }
     };
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (Auth.loggedIn()) {
+            return navigate('/');
+        }
+    }, [navigate]);
 
     return (
         <section className="main-content-container">

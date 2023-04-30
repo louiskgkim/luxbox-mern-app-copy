@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 
@@ -45,11 +45,19 @@ const Login = (props) => {
         });
     };
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (Auth.loggedIn()) {
+            return navigate('/');
+        }
+    }, [navigate]);
+
     return (
-        <section className="main-content-container">
+        <section className="main-content-container" >
             <div className="main-content-row">
                 <h3>Sign in</h3>
-            </div>
+            </div >
             <div className="main-content-row">
                 <div className="account-form-wrapper">
                     <form className="account-form" onSubmit={handleFormSubmit}>
@@ -102,8 +110,8 @@ const Login = (props) => {
                     </div>
                 </div>
             </div>
-        </section >
-    );
+        </section>
+    )
 };
 
 export default Login;

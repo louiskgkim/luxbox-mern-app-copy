@@ -1,7 +1,9 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Category, Color, Designer, Order } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+const stripe = require('stripe')(process.env.STRIPE_SECRET);
 
 // A resolver is a function that's responsible for populating the data for a single field in your schema.
 // Create the functions that fulfill the queries defined in `typeDefs.js`
@@ -146,7 +148,7 @@ const resolvers = {
 
             // If there is no user with that email address, return an Authentication error stating so
             if (!user) {
-                throw new AuthenticationError('Incorrect credentials1');
+                throw new AuthenticationError('Incorrect credentials');
             }
 
             // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
@@ -154,7 +156,7 @@ const resolvers = {
 
             // If the password is incorrect, return an Authentication error stating so
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials2');
+                throw new AuthenticationError('Incorrect credentials');
             }
 
             // If email and password are correct, sign user into the application with a JWT
