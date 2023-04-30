@@ -45,7 +45,7 @@ const Register = () => {
 
     useEffect(() => {
         if (Auth.loggedIn()) {
-            return navigate('/');
+            return navigate('/account');
         }
     }, [navigate]);
 

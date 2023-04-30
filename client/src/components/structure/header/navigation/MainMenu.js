@@ -27,31 +27,31 @@ const MainMenu = (props) => {
                     <Link to={undefined} className="main-menu-close-btn link" onClick={closeSideNav}>&times;</Link>
                 </li>
                 <li>
-                    <Link to="/shop/new-in" className="link">New In</Link>
+                    <Link to="/shop/new-in" className="link" onClick={closeSideNav}>New In</Link>
                 </li>
                 <li>
-                    <Link to="/shop/designers" className="link">Designers</Link>
+                    <Link to="/shop/designers" className="link" onClick={closeSideNav}>Designers</Link>
                 </li>
                 <li>
-                    <Link to="/shop/clothing" className="link">Clothing</Link>
+                    <Link to="/shop/clothing" className="link" onClick={closeSideNav}>Clothing</Link>
                 </li>
                 <li>
-                    <Link to="/shop/shoes" className="link">Shoes</Link>
+                    <Link to="/shop/shoes" className="link" onClick={closeSideNav}>Shoes</Link>
                 </li>
                 <li>
-                    <Link to="/shop/bags" className="link">Bags</Link>
+                    <Link to="/shop/bags" className="link" onClick={closeSideNav}>Bags</Link>
                 </li>
                 <li>
-                    <Link to="/shop/jewelry-and-accessories" className="link">Jewelry & Accessories</Link>
+                    <Link to="/shop/jewelry-and-accessories" className="link" onClick={closeSideNav}>Jewelry & Accessories</Link>
                 </li>
                 <li>
-                    <Link to="/shop/beauty" className="link">Beauty</Link>
+                    <Link to="/shop/beauty" className="link" onClick={closeSideNav}>Beauty</Link>
                 </li>
                 <li>
-                    <Link to="/shop/home" className="link">Home</Link>
+                    <Link to="/shop/home" className="link" onClick={closeSideNav}>Home</Link>
                 </li>
                 <li>
-                    <Link to="/shop/sale" className="link">Sale</Link>
+                    <Link to="/shop/sale" className="link" onClick={closeSideNav}>Sale</Link>
                 </li>
             </ul>
             <MenuIcon id="collapsible-menu-icon" onClick={openSideNav} />
