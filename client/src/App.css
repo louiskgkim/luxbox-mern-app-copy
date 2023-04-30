@@ -534,6 +534,10 @@ main {
   text-decoration: line-through;
 }
 
+.sale-price-wrapper .sale-price {
+  color: var(--red);
+}
+
 /* --- ProductDetail --- */
 .product-detail-wrapper {
   width: 100%;

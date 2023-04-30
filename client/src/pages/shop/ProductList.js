@@ -129,7 +129,7 @@ const ProductList = (props) => {
     }
 
     const getSalePrice = (price) => {
-        return (price * 0.8);
+        return (Math.ceil(price * 0.8));
     };
 
     return (

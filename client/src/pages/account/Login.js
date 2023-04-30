@@ -49,7 +49,7 @@ const Login = (props) => {
 
     useEffect(() => {
         if (Auth.loggedIn()) {
-            return navigate('/account');
+            return navigate('/account/details');
         }
     }, [navigate]);
 
