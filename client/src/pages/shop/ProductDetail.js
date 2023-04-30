@@ -1,6 +1,6 @@
 import { useLocation, Link } from 'react-router-dom';
 
-import { formatCurrency } from '../../utils/formatters';
+import { formatCurrency } from '../../utils/helpers';
 
 const ProductDetail = (props) => {
     const location = useLocation();

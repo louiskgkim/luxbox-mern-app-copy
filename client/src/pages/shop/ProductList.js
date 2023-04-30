@@ -18,8 +18,7 @@ import {
     QUERY_DESIGNERS,
     QUERY_COLORS
 } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
-import { formatCategoryName } from '../../utils/formatters';
+import { idbPromise, formatCategoryName, flattenObj } from '../../utils/helpers';
 
 import ProductCard from '../../components/Product/ProductCard';
 import NotFound from '../../components/Product/NotFound';
@@ -95,21 +94,14 @@ const ProductList = (props) => {
             return state.products.filter((product) => product.onSale === "true")
         }
         else if (searchInputParam) {
-            const hasSearchInput = (product) => {
-                if (
-                    product.category.name.toLowerCase().includes(searchInputParam.toLowerCase())
-                    ||
-                    product.color.name.toLowerCase().includes(searchInputParam.toLowerCase())
-                    ||
-                    product.designer.name.toLowerCase().includes(searchInputParam.toLowerCase())
-                    ||
-                    product.name.toLowerCase().includes(searchInputParam.toLowerCase())
-                ) {
-                    return true;
-                }
-                return false;
-            }
-            return state.products.filter(hasSearchInput);
+            const searchWordsArr = searchInputParam.trim().toLowerCase().split(" ");
+
+            return state.products.filter((product) => {
+                const flattenedProductObj = flattenObj(product);
+                const productValsArr = Object.values(flattenedProductObj);
+
+                return searchWordsArr.every(searchWord => productValsArr.includes(searchWord));
+            })
         }
         return state.products.filter((product) => product.category._id === currentCategory);
     }

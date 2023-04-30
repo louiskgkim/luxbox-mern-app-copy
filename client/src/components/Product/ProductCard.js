@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { formatCurrency } from '../../utils/formatters';
+import { formatCurrency } from '../../utils/helpers';
 
 const ProductCard = (props) => {
     return (

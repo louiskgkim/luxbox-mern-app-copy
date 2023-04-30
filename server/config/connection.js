@@ -1,7 +1,8 @@
+const path = require('path');
 const mongoose = require('mongoose');
-require("dotenv").config();
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
-const dbName = "luxbox_db";
+const dbName = process.env.DB_NAME;
 
 mongoose.connect(process.env.MONGODB_URI || `mongodb://127.0.0.1:27017/${dbName}`, {
     useNewUrlParser: true,

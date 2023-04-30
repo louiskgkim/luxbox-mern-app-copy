@@ -1,11 +1,4 @@
-export function pluralize (name, count) {
-    if (count === 1) {
-        return name;
-    }
-    return name + 's';
-}
-
-export function idbPromise (storeName, method, object) {
+export const idbPromise = (storeName, method, object) => {
     return new Promise((resolve, reject) => {
         const request = window.indexedDB.open('shop-shop', 1);
         let db, tx, store;
@@ -55,4 +48,55 @@ export function idbPromise (storeName, method, object) {
             };
         };
     });
-}
+};
+
+export const formatCurrency = (num) => {
+    return '$' + num.toLocaleString("en-US");
+};
+
+export const formatCategoryName = (category) => {
+    switch (category) {
+        case "bags":
+            return "Bags";
+        case "beauty":
+            return "Beauty";
+        case "clothing":
+            return "Clothing";
+        case "home":
+            return "Home";
+        case "jewelry-and-accessories":
+            return "Jewelry & Accessories";
+        case "shoes":
+            return "Shoes";
+        default:
+            return;
+    }
+};
+
+export const flattenObj = (obj) => {
+    let resultObj = {};
+
+    for (const key in obj) {
+        if (key === "__typename" || key === "_id") {
+            continue;
+        }
+        else if ((typeof obj[key]) === "object") {
+            const nestedObj = flattenObj(obj[key]);
+            for (const subKey in nestedObj) {
+                resultObj[key + '.' + subKey] = nestedObj[subKey];
+            }
+        }
+        else {
+            if ((typeof obj[key]) === "string") {
+                if (obj[key].includes(" ")) {
+                    for (let i = 0; i < obj[key].split(" ").length; i++) {
+                        resultObj[key + '.' + i] = obj[key].toLowerCase().split(" ")[i];
+                    }
+                }
+                resultObj[key] = obj[key].toLowerCase();
+            }
+        }
+    }
+
+    return resultObj;
+};

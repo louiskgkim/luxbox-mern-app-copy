@@ -146,7 +146,7 @@ const resolvers = {
 
             // If there is no user with that email address, return an Authentication error stating so
             if (!user) {
-                throw new AuthenticationError('Incorrect credentials');
+                throw new AuthenticationError('Incorrect credentials1');
             }
 
             // If there is a user found, execute the `isCorrectPassword` instance method and check if the correct password was provided
@@ -154,7 +154,7 @@ const resolvers = {
 
             // If the password is incorrect, return an Authentication error stating so
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials');
+                throw new AuthenticationError('Incorrect credentials2');
             }
 
             // If email and password are correct, sign user into the application with a JWT
