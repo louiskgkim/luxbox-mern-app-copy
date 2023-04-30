@@ -20,7 +20,7 @@ const AccountMenu = (props) => {
             {Auth.loggedIn()
                 ? (
                     <div className="login-status-wrapper">
-                        <Link to="/account" className="link">
+                        <Link to="/account/details" className="link">
                             <div className="header-nav-menu-with-icon">
                                 <AccountIcon fontSize="small" className="header-nav-icon" id="profile-icon" />
                                 <span>My Account</span>

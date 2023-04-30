@@ -523,6 +523,17 @@ main {
   font-weight: bold;
 }
 
+.sale-price-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sale-price-wrapper .original-price {
+  color: var(--medium-dark);
+  font-weight: 100;
+  text-decoration: line-through;
+}
+
 /* --- ProductDetail --- */
 .product-detail-wrapper {
   width: 100%;

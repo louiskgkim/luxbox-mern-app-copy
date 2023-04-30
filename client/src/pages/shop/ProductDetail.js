@@ -14,7 +14,18 @@ const ProductDetail = (props) => {
                 <div className="product-detail-info">
                     <h3>{product.designer}</h3>
                     <p className="product-detail-name">{product.name}</p>
-                    <p className="product-detail-price">{formatCurrency(product.price)}</p>
+                    <p className="product-detail-price">
+                        {product.onSale === true
+                            ? (
+                                <div className="sale-price-wrapper">
+                                    <span className="original-price">{formatCurrency(product.price)}</span>
+                                    <span className="sale-price">{formatCurrency(product.salePrice)}</span>
+                                </div>
+                            )
+                            : formatCurrency(product.price)
+                        }
+
+                    </p>
                     <p className="product-detail-color">Color: {product.color}</p>
                     <div className="product-detail-button-wrapper">
                         <button className="filled-btn">

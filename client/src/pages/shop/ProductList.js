@@ -97,7 +97,7 @@ const ProductList = (props) => {
             return state.products;
         }
         else if (props.category === "Sale") {
-            return state.products.filter((product) => product.onSale === "true");
+            return state.products.filter((product) => product.onSale === true);
         }
         else if (searchInputParam) {
             const searchWordsArr = searchInputParam.trim().toLowerCase().split(" ");
@@ -127,6 +127,10 @@ const ProductList = (props) => {
         //     }
         // })
     }
+
+    const getSalePrice = (price) => {
+        return (price * 0.8);
+    };
 
     return (
         <section className="main-content-container">
@@ -250,7 +254,7 @@ const ProductList = (props) => {
                                         </AccordionDetails>
                                     </Accordion>
                                 </div>
-                                {state.products.length > 0
+                                {filterProducts().length > 0
                                     ? (<div className="product-card-column-wrapper">
                                         {filterProducts().map((product, i) => {
                                             return (
@@ -261,6 +265,7 @@ const ProductList = (props) => {
                                                     category={product.category.name}
                                                     name={product.name}
                                                     price={product.price}
+                                                    salePrice={getSalePrice(product.price)}
                                                     color={product.color.name}
                                                     onSale={product.onSale}
                                                 />

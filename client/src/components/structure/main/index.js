@@ -17,18 +17,17 @@ const Main = (props) => {
         <main>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/account" element={<Account />} />
                 <Route path="/account/sign-in" element={<Login />} />
                 <Route path="/account/register" element={<Register />} />
-                <Route path="/account/orders" element={<OrderHistory />} />
                 <Route path="/account/wishlist" element={<Wishlist />} />
                 <Route path="/account/shopping-bag" element={<ShoppingBag />} />
+                <Route path="/account/:accountParam" element={<Account />} />
                 <Route path="/shop/new-in" element={<ProductList category="New In" />} />
                 <Route path="/shop/designers" element={<DesignerList category="Designers"/>} />
                 <Route path="/shop/designers/:designerParam" element={<ProductList />} />
                 <Route path="/shop/sale" element={<ProductList category="Sale"/>} />
                 <Route path="/shop/search/:searchInputParam" element={<ProductList />} />
-                <Route path="/shop/product/:id" element={<ProductDetail />} />
+                <Route path="/shop/product/:productNameParam" element={<ProductDetail />} />
                 <Route path="/shop/:categoryParam" element={<ProductList />} />
                 <Route path="/support/contact-us" element={<ContactUs />} />
                 <Route path="*" element={<Error />} />

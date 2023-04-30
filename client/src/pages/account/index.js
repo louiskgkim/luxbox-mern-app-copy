@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -7,6 +7,7 @@ import { QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 import AccountDetail from '../../components/Account/AccountDetail';
+import OrderHistory from '../../components/Account/OrderHistory';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Accordion from '@mui/material/Accordion';
@@ -14,9 +15,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 
 const Account = () => {
-    const { userId } = useParams();
+    const { userId, accountParam } = useParams();
 
-    const { loading, data } = useQuery(QUERY_USER, {
+    const { data } = useQuery(QUERY_USER, {
         variables: { userId: userId },
     });
 
@@ -58,7 +59,7 @@ const Account = () => {
                             <AccordionDetails>
                                 <ul>
                                     <li>
-                                        <Link to="/account" className="link">
+                                        <Link to="/account/details" className="link">
                                             Account Details
                                         </Link>
                                     </li>
@@ -77,7 +78,8 @@ const Account = () => {
                         </Accordion>
                     </div>
                     <div className="account-content-wrapper">
-                        <AccountDetail user={user} />
+                        {accountParam === "details" && <AccountDetail user={user} />}
+                        {accountParam === "orders" && <OrderHistory user={user} />}
                     </div>
                 </div>
             </div>

@@ -1,6 +1,4 @@
 const AccountDetail = (props) => {
-    console.log(props.user);
-
     return (
         <div className="account-detail-wrapper">
             <div className="outlined-box">
