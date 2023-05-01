@@ -2,7 +2,7 @@ const OrderHistory = (props) => {
 
     return (
         <div>
-            order
+            Order History will be updated!
         </div>
     );
 };
