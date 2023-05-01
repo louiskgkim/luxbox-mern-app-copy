@@ -199,7 +199,6 @@ const ProductDetail = (props) => {
                                 )
                                 : formatCurrency(singleProduct().price)
                             }
-
                         </div>
                         <p className="product-detail-color">Color: {singleProduct().color.name}</p>
                         <div className="product-detail-button-wrapper">

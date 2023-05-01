@@ -31,9 +31,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 
 const ProductList = (props) => {
-
-    const [sortState, setSortState] = useState('test');
-    console.log(sortState);
+    const [sortState, setSortState] = useState('newest');
 
     const { categoryParam, searchInputParam, designerParam, colorParam } = useParams();
 
@@ -123,66 +121,94 @@ const ProductList = (props) => {
     }, [productData, loading, dispatch]);
 
 
-
-
-    // const sortMethods = {
-    //     none: { method: (a, b) => null },
-    //     newest: { method: (a, b) => parseInt(b.createdAt) - parseInt(a.createdAt) },
-    //     priceHighToLow: { method: (a, b) => parseInt(b.price) - parseInt(a.price) },
-    //     priceLowToHigh: { method: (a, b) => parseInt(a.price) - parseInt(b.price) },
-    // }
-
-    // console.log(sortState);
-    // useEffect(() => {
-    //     if (sortState !== 'none'){
-    //         return state.products.sort(sortMethods[sortState].method);
-    //     }
-
-    // })
+    const handleSortChange = (e) => {
+        setSortState(e.target.value);
+    }
 
     const filterProducts = () => {
         if (props.category === "New In") {
-            return state.products;
+            switch (sortState) {
+                case "newest":
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt));
+                case "price-high-to-low":
+                    return state.products.sort((a, b) => parseInt(b.price) - parseInt(a.price));
+                case "price-low-to-high":
+                    return state.products.sort((a, b) => a.price - b.price);
+                default:
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt));
+            }
         }
         else if (props.category === "Sale") {
-            return state.products.filter((product) => product.onSale === true);
+            switch (sortState) {
+                case "newest":
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt)).filter((product) => product.onSale === true);
+                case "price-high-to-low":
+                    return state.products.sort((a, b) => parseInt(b.price) - parseInt(a.price)).filter((product) => product.onSale === true);
+                case "price-low-to-high":
+                    return state.products.sort((a, b) => a.price - b.price).filter((product) => product.onSale === true);
+                default:
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt)).filter((product) => product.onSale === true);
+            }
         }
         else if (searchInputParam) {
             const searchWordsArr = searchInputParam.trim().toLowerCase().split(" ");
 
-            return state.products.filter((product) => {
-                const flattenedProductObj = flattenObj(product);
-                const productValsArr = Object.values(flattenedProductObj);
+            switch (sortState) {
+                case "newest":
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt)).filter((product) => {
+                        const flattenedProductObj = flattenObj(product);
+                        const productValsArr = Object.values(flattenedProductObj);
 
-                return searchWordsArr.every(searchWord => productValsArr.includes(searchWord));
-            });
+                        return searchWordsArr.every(searchWord => productValsArr.includes(searchWord));
+                    });
+                case "price-high-to-low":
+                    return state.products.sort((a, b) => parseInt(b.price) - parseInt(a.price)).filter((product) => {
+                        const flattenedProductObj = flattenObj(product);
+                        const productValsArr = Object.values(flattenedProductObj);
+
+                        return searchWordsArr.every(searchWord => productValsArr.includes(searchWord));
+                    });
+                case "price-low-to-high":
+                    return state.products.sort((a, b) => a.price - b.price).filter((product) => {
+                        const flattenedProductObj = flattenObj(product);
+                        const productValsArr = Object.values(flattenedProductObj);
+
+                        return searchWordsArr.every(searchWord => productValsArr.includes(searchWord));
+                    });
+                default:
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt)).filter((product) => {
+                        const flattenedProductObj = flattenObj(product);
+                        const productValsArr = Object.values(flattenedProductObj);
+
+                        return searchWordsArr.every(searchWord => productValsArr.includes(searchWord));
+                    });
+            }
         }
         else if (designerParam) {
-            return state.products.filter((product) => product.designer.name === formattedDesignerName);
+            switch (sortState) {
+                case "newest":
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt)).filter((product) => product.designer.name === formattedDesignerName);
+                case "price-high-to-low":
+                    return state.products.sort((a, b) => parseInt(b.price) - parseInt(a.price)).filter((product) => product.designer.name === formattedDesignerName);
+                case "price-low-to-high":
+                    return state.products.sort((a, b) => a.price - b.price).filter((product) => product.designer.name === formattedDesignerName);
+                default:
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt)).filter((product) => product.designer.name === formattedDesignerName);
+            }
         }
-        return state.products.filter((product) => product.category._id === currentCategory);
+        else {
+            switch (sortState) {
+                case "newest":
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt)).filter((product) => product.category._id === currentCategory);
+                case "price-high-to-low":
+                    return state.products.sort((a, b) => parseInt(b.price) - parseInt(a.price)).filter((product) => product.category._id === currentCategory);
+                case "price-low-to-high":
+                    return state.products.sort((a, b) => a.price - b.price).filter((product) => product.category._id === currentCategory);
+                default:
+                    return state.products.sort((a, b) => parseInt(a.createdAt) - parseInt(b.createdAt)).filter((product) => product.category._id === currentCategory);
+            }
+        }
     }
-
-
-    // const handleSortChange = (e) => {
-    //     setSortState(e.target.value)
-    //     console.log(sortState);
-
-    //     const sortProducts = (a, b) => {
-    //         switch (sortState) {
-    //             case "newest":
-    //                 return parseInt(b.createdAt) - parseInt(a.createdAt);
-    //             case "price-high-to-low":
-    //                 return parseInt(b.price) - parseInt(a.price);
-    //             case "price-low-to-high":
-    //                 return parseInt(a.price) - parseInt(b.price);
-    //             default:
-    //                 break;
-    //         }
-    //     }
-
-    //     return state.products.sort((a, b) => sortProducts);
-    // }
 
     const getSalePrice = (price) => {
         return (Math.ceil(price * 0.8));
@@ -213,7 +239,6 @@ const ProductList = (props) => {
                                 </div>
                                 <div className="product-sort-wrapper">
                                     <NativeSelect
-                                        defaultValue="Sort By"
                                         inputProps={{
                                             id: 'uncontrolled-native',
                                         }}
@@ -225,11 +250,11 @@ const ProductList = (props) => {
                                                 borderBottom: "1px solid white",
                                             },
                                         }}
-                                        onChange={(e) => setSortState(e.target.value)}
+                                        onChange={handleSortChange}
                                     >
                                         <option value="newest">Newest</option>
-                                        <option value="priceHighToLow">Price High to Low</option>
-                                        <option value="priceLowToHigh">Price Low to High</option>
+                                        <option value="price-high-to-low">Price High to Low</option>
+                                        <option value="price-low-to-high">Price Low to High</option>
                                     </NativeSelect>
                                 </div>
                             </div>
