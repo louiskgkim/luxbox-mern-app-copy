@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "seed": "node seeds/seed.js",
-    "heroku-postbuild": "cd ../client && npm install --only=dev && npm install && npm run build"
+    "seed": "node seeds/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +19,6 @@
     "express": "^4.18.2",
     "graphql": "^16.6.0",
     "jsonwebtoken": "^9.0.0",
-    "mongodb": "^5.3.0",
     "mongoose": "^7.0.4",
     "mongoose-unique-validator": "^4.0.0",
     "stripe": "^12.3.0"
