@@ -1,15 +1,19 @@
 # LuxBox MERN App
 
 ## Description
-This project aims to provide a centralized platform for frequent luxury goods purchasers to buy brand items easily and quickly. The platform is designed to be user-friendly and provide a seamless shopping experience for customers.This project involves creating a collaborative MERN-stack single-page application that utilizes a MongoDB back end, a GraphQL API, and an Express.js and Node.js server, as well as a React front end. The application will incorporate user authentication with JWT to create a user-focused platform. Agile development methodologies such as GitHub for code storage, project management tools, and Git branch workflow will be utilized for feature and bug fixes.
+This project aims to provide a centralized platform for frequent luxury goods purchasers to buy brand items easily and quickly. The platform is designed to be user-friendly and provide a seamless shopping experience for customers. This project involves creating a collaborative MERN-stack single-page application that utilizes a MongoDB back end, a GraphQL API, Stripe API and an Express.js and Node.js server, as well as a React front end. The application will incorporate user authentication with JWT to create a user-focused platform. Agile development methodologies such as GitHub for code storage, project management tools, and Git branch workflow will be utilized for feature and bug fixes.
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Credits](#credits)
-- [License](#license)
+- [LuxBox MERN App](#luxbox-mern-app)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Screenshots](#screenshots)
+    - [Repository:](#repository)
+  - [Credits](#credits)
+  - [License](#license)
 
 ## Installation
 Some files will be needed in order for this generator to operate:
@@ -22,14 +26,31 @@ Some files will be needed in order for this generator to operate:
 ## Usage
 1. Clone the repository
 2. Open terminal in the right file path
-3. Run npm i into terminal
-4. Run npm run dev into terminal
-5. The application should now run on http://localhost:3000/
-6. Or access via Heroku: 
+3. `StripeAPIKey`: Create your account here [register](https://dashboard.stripe.com/register).
+4. Run npm i into terminal to install dependencies
+5. Run npm run develop into terminal
+6. The application should now run on http://localhost:3000/
+7. Or access via Heroku:
 
 
 ## Screenshots
-Add screenshots later...
+Homepage
+
+
+Search Feature
+
+
+Sign-in Page
+
+
+Register Page
+
+
+Designers Page
+
+
+Sale Page
+
 
 ### Repository:
 ```
@@ -51,6 +72,7 @@ References:
 - [MongoDB Installation Guide](https://www.mongodb.com/try/download/community)
 - [Stripe API Installation Guide](https://stripe.com/docs/keys)
 - [Mongoose Installation Guide](https://mongoosejs.com/docs/)
+- [Stripe API Registration](https://dashboard.stripe.com/register)
 
 
 ## License
