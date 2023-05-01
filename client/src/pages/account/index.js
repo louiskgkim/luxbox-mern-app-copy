@@ -15,11 +15,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 
 const Account = () => {
-    const { userId, accountParam } = useParams();
+    const { accountParam } = useParams();
 
-    const { data } = useQuery(QUERY_USER, {
-        variables: { userId: userId },
-    });
+    const { data } = useQuery(QUERY_USER);
 
     const user = data?.user || {};
 
