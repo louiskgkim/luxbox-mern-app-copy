@@ -30,22 +30,23 @@ Some files will be needed in order for this generator to operate:
 
 
 ## Screenshots
-Homepage
+### Homepage
+<img width="1710" alt="HomePage" src="https://user-images.githubusercontent.com/115679155/235415455-d271098e-1106-4d0a-8f52-a8c70d7b44a5.png">
 
+### Search Feature
+<img width="1710" alt="Search Feature" src="https://user-images.githubusercontent.com/115679155/235415462-9f54a799-9cd5-4c7e-8b2a-280812f26cb7.png">
 
-Search Feature
+### Sign-in Page
+<img width="1710" alt="Sign In Page" src="https://user-images.githubusercontent.com/115679155/235415467-4ee420fe-2c14-4d82-aaa4-d0b3c543dca8.png">
 
+### Register Page
+<img width="1710" alt="Register Page" src="https://user-images.githubusercontent.com/115679155/235415471-04de7bae-d1cb-4f01-bf77-906b09396d09.png">
 
-Sign-in Page
+### Designers Page
+<img width="1707" alt="Designers Page" src="https://user-images.githubusercontent.com/115679155/235415487-b0afe6d1-6059-430b-aceb-7a78e1483247.png">
 
-
-Register Page
-
-
-Designers Page
-
-
-Sale Page
+### Sale Page
+<img width="1641" alt="Sale Page" src="https://user-images.githubusercontent.com/115679155/235415496-d6723946-f53e-498a-aca2-cffcfa733ede.png">
 
 
 ### Repository:
