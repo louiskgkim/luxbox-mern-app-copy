@@ -64,10 +64,10 @@ const ContactUs = (props) => {
                                 <Link to="https://github.com/louiskgkim" target="_blank" className="link">
                                     <GitHubIcon />
                                 </Link>
-                                <Link to="" target="_blank" className="link">
+                                <Link to="https://www.linkedin.com/in/louiskgkim/" target="_blank" className="link">
                                     <LinkedInIcon />
                                 </Link>
-                                <Link to="" className="link">
+                                <Link to="Lkgk31@gmail.com" className="link">
                                     <EmailIcon />
                                 </Link>
                             </div>
