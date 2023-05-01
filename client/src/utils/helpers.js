@@ -6,6 +6,7 @@ export const idbPromise = (storeName, method, object) => {
             const db = request.result;
             db.createObjectStore('products', { keyPath: '_id' });
             db.createObjectStore('shoppingBag', { keyPath: '_id' });
+            db.createObjectStore('wishlist', { keyPath: '_id' });
             db.createObjectStore('categories', { keyPath: '_id' });
             db.createObjectStore('designers', { keyPath: '_id' });
             db.createObjectStore('colors', { keyPath: '_id' });
