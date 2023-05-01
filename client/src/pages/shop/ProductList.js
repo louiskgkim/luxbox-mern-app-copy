@@ -46,6 +46,7 @@ const ProductList = (props) => {
 
     const { loading, data: productData } = useQuery(QUERY_PRODUCTS);
     const { data: categoryData } = useQuery(QUERY_CATEGORIES);
+    const { data: colorData } = useQuery(QUERY_COLORS);
 
     useEffect(() => {
         if (categoryData) {
