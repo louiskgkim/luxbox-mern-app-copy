@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Home from '../../../pages/Home';
-import Account from '../../../pages/Account';
-import Login from '../../../pages/Account/Login';
-import Register from '../../../pages/Account/Register';
-import Wishlist from '../../../pages/Account/Wishlist';
-import ShoppingBag from '../../../pages/Account/ShoppingBag';
-import { DesignerList, ProductList, ProductDetail } from '../../../pages/Shop';
-import { ContactUs, Error } from '../../../pages/Support';
+import Home from '../../../pages/home';
+import Account from '../../../pages/account';
+import Login from '../../../pages/account/Login';
+import Register from '../../../pages/account/Register';
+import Wishlist from '../../../pages/account/Wishlist';
+import ShoppingBag from '../../../pages/account/ShoppingBag';
+import { DesignerList, ProductList, ProductDetail } from '../../../pages/shop';
+import { ContactUs, Error } from '../../../pages/support';
 import AccountDetail from '../../Account/AccountDetail';
 import OrderHistory from '../../Account/OrderHistory';
 
