@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 
-import { QUERY_CHECKOUT } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
-import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_SHOPPING_BAG, ADD_MULTIPLE_TO_SHOPPING_BAG } from '../../utils/actions';
-import Auth from '../../utils/auth';
+import { QUERY_CHECKOUT } from '../../../utils/queries';
+import { idbPromise } from '../../../utils/helpers';
+import { useStoreContext } from '../../../utils/GlobalState';
+import { TOGGLE_SHOPPING_BAG, ADD_MULTIPLE_TO_SHOPPING_BAG } from '../../../utils/actions';
+import Auth from '../../../utils/auth';
 
-import ShoppingBagItemCard from '../../components/Product/ShoppingBagItemCard';
+import ShoppingBagItemCard from '../../../components/product/ShoppingBagItemCard';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 

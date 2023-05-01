@@ -1,4 +1,4 @@
-const Error = (props) => {
+const WrongRouteError = (props) => {
     return (
         <section className="main-content-wrapper">
             <div className="main-content-row">
@@ -8,4 +8,4 @@ const Error = (props) => {
     );
 };
 
-export default Error;
+export default WrongRouteError;

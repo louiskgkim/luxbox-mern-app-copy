@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import AlphabetList from '../../utils/AlphabetList';
+import AlphabetList from '../../../utils/AlphabetList';
 
 import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../../utils/GlobalState';
-import { UPDATE_DESIGNERS, } from '../../utils/actions';
-import { QUERY_DESIGNERS, } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
+import { useStoreContext } from '../../../utils/GlobalState';
+import { UPDATE_DESIGNERS, } from '../../../utils/actions';
+import { QUERY_DESIGNERS, } from '../../../utils/queries';
+import { idbPromise } from '../../../utils/helpers';
 
 const DesignerList = (props) => {
     const [state, dispatch] = useStoreContext();

@@ -2,7 +2,7 @@ import { useEffect, Fragment, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../../utils/GlobalState';
+import { useStoreContext } from '../../../utils/GlobalState';
 import {
     UPDATE_PRODUCTS,
     UPDATE_CATEGORIES,
@@ -11,17 +11,17 @@ import {
     UPDATE_CURRENT_DESIGNER,
     UPDATE_COLORS,
     UPDATE_CURRENT_COLOR
-} from '../../utils/actions';
+} from '../../../utils/actions';
 import {
     QUERY_PRODUCTS,
     QUERY_CATEGORIES,
     QUERY_DESIGNERS,
     QUERY_COLORS
-} from '../../utils/queries';
-import { idbPromise, formatCategoryName, flattenObj } from '../../utils/helpers';
+} from '../../../utils/queries';
+import { idbPromise, formatCategoryName, flattenObj } from '../../../utils/helpers';
 
-import ProductCard from '../../components/Product/ProductCard';
-import NotFound from '../../components/Product/NotFound';
+import ProductCard from '../../../components/product/ProductCard';
+import NotFound from '../../../components/product/NotFound';
 
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -32,7 +32,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 
 const ProductList = (props) => {
 
-    const { categoryParam, searchInputParam, designerParam } = useParams();
+    const { categoryParam, searchInputParam, designerParam, colorParam } = useParams();
 
     let formattedDesignerName;
 
@@ -73,6 +73,32 @@ const ProductList = (props) => {
             });
         }
     }, [categoryData, loading, dispatch, categoryParam]);
+
+    useEffect(() => {
+        if (colorData) {
+            dispatch({
+                type: UPDATE_COLORS,
+                colors: colorData.colors,
+            });
+            colorData.colors.forEach((color) => {
+                idbPromise('colors', 'put', color);
+
+                if (color.name === colorParam) {
+                    dispatch({
+                        type: UPDATE_CURRENT_CATEGORY,
+                        currentCategory: color._id,
+                    });
+                }
+            });
+        } else if (!loading) {
+            idbPromise('colors', 'get').then((colors) => {
+                dispatch({
+                    type: UPDATE_COLORS,
+                    colors: colors,
+                });
+            });
+        }
+    }, [colorData, loading, dispatch, colorParam]);
 
     useEffect(() => {
         if (productData) {

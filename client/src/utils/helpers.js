@@ -74,6 +74,10 @@ export const formatCategoryName = (category) => {
     }
 };
 
+export const decodeSpace = (str) => {
+    return str.replace("%20", " ");
+};
+
 export const flattenObj = (obj) => {
     let resultObj = {};
 

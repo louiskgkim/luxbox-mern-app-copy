@@ -35,33 +35,6 @@ export const QUERY_CHECKOUT = gql`
   }
 `;
 
-export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
-      _id
-      image
-      designer {
-        _id
-        name
-      }
-      name
-      price
-      color {
-        _id
-        name
-      }
-      quantity
-      category {
-        _id
-        name
-      }
-      onSale
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
 export const QUERY_CATEGORIES = gql`
   {
     categories {
