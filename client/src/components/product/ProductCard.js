@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utils/helpers';
 
 const ProductCard = (props) => {
-    console.log(props);
     return (
         <Link to={`/shop/product/${props.designer}/${props.category}/${props.name}`} className="link" state={{ product: props }}>
             <div className="product-card-column">

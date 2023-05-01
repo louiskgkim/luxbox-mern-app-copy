@@ -8,13 +8,20 @@ import { useStoreContext } from '../../../utils/GlobalState';
 
 import {
     UPDATE_PRODUCTS,
+    UPDATE_CATEGORIES,
+    UPDATE_CURRENT_CATEGORY,
+    UPDATE_DESIGNERS,
+    UPDATE_CURRENT_DESIGNER,
     UPDATE_COLORS,
+    UPDATE_CURRENT_COLOR,
     ADD_TO_SHOPPING_BAG,
     ADD_TO_WISHLIST
 } from '../../../utils/actions';
 import {
     QUERY_PRODUCTS,
-    QUERY_COLORS
+    QUERY_CATEGORIES,
+    QUERY_DESIGNERS,
+    QUERY_COLORS,
 } from '../../../utils/queries';
 import { formatCurrency, idbPromise } from '../../../utils/helpers';
 
@@ -27,7 +34,10 @@ const ProductDetail = (props) => {
     const { products, shoppingBag } = state;
 
     const { loading, data: productData } = useQuery(QUERY_PRODUCTS);
+    const { data: designerData } = useQuery(QUERY_DESIGNERS);
+    const { data: categoryData } = useQuery(QUERY_CATEGORIES);
     const { data: colorData } = useQuery(QUERY_COLORS);
+
 
     useEffect(() => {
         if (productData) {
@@ -47,6 +57,58 @@ const ProductDetail = (props) => {
             });
         }
     }, [productData, loading, dispatch]);
+
+    useEffect(() => {
+        if (categoryData) {
+            dispatch({
+                type: UPDATE_CATEGORIES,
+                categories: categoryData.categories,
+            });
+            categoryData.categories.forEach((category) => {
+                idbPromise('categories', 'put', category);
+
+                if (category.name === categoryParam) {
+                    dispatch({
+                        type: UPDATE_CURRENT_CATEGORY,
+                        currentCategory: category._id,
+                    });
+                }
+            });
+        } else if (!loading) {
+            idbPromise('categories', 'get').then((categories) => {
+                dispatch({
+                    type: UPDATE_CATEGORIES,
+                    categories: categories,
+                });
+            });
+        }
+    }, [categoryData, loading, dispatch, categoryParam]);
+
+    useEffect(() => {
+        if (designerData) {
+            dispatch({
+                type: UPDATE_DESIGNERS,
+                designers: designerData.designers,
+            });
+            designerData.designers.forEach((designer) => {
+                idbPromise('designers', 'put', designer);
+
+                if (designer.name === designerParam) {
+                    dispatch({
+                        type: UPDATE_CURRENT_CATEGORY,
+                        currentCategory: designer._id,
+                    });
+                }
+            });
+        } else if (!loading) {
+            idbPromise('designers', 'get').then((designers) => {
+                dispatch({
+                    type: UPDATE_DESIGNERS,
+                    designers: designers,
+                });
+            });
+        }
+    }, [designerData, loading, dispatch, designerParam]);
 
     useEffect(() => {
         if (colorData) {
@@ -114,6 +176,10 @@ const ProductDetail = (props) => {
 
     //     idbPromise('shoppingBag', 'delete', { ...currentProduct });
 
+    const getSalePrice = (price) => {
+        return (Math.ceil(price * 0.8));
+    };
+
     return (
         <section className="main-content-container">
             {singleProduct() !== undefined && (
@@ -129,7 +195,7 @@ const ProductDetail = (props) => {
                                 ? (
                                     <div className="sale-price-wrapper">
                                         <span className="original-price">{formatCurrency(singleProduct().price)}</span>
-                                        <span className="sale-price">{formatCurrency(singleProduct().salePrice)}</span>
+                                        <span className="sale-price">{formatCurrency(getSalePrice(singleProduct().price))}</span>
                                     </div>
                                 )
                                 : formatCurrency(singleProduct().price)
