@@ -852,7 +852,12 @@ db.once('open', async () => {
             password: '1234',
             orders: [
                 {
-                    products: [products[0]._id, products[0]._id, products[1]._id]
+                    products: [products[5]._id, products[10]._id, products[25]._id]
+                }
+            ],
+            wishlist: [
+                {
+                    products: [products[3]._id, products[19]._id, products[50]._id]
                 }
             ]
         });

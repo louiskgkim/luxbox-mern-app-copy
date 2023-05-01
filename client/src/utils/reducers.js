@@ -5,6 +5,8 @@ import {
     UPDATE_SHOPPING_BAG_QUANTITY,
     REMOVE_FROM_SHOPPING_BAG,
     ADD_MULTIPLE_TO_SHOPPING_BAG,
+    ADD_TO_WISHLIST,
+    REMOVE_FROM_WISHLIST,
     UPDATE_CATEGORIES,
     UPDATE_CURRENT_CATEGORY,
     UPDATE_DESIGNERS,
@@ -49,14 +51,14 @@ export const reducer = (state, action) => {
             };
 
         case REMOVE_FROM_SHOPPING_BAG:
-            let newState = state.shoppingBag.filter(product => {
+            let newShoppingBagState = state.shoppingBag.filter(product => {
                 return product._id !== action._id;
             });
 
             return {
                 ...state,
-                shoppingBagOpen: newState.length > 0,
-                shoppingBag: newState
+                shoppingBagOpen: newShoppingBagState.length > 0,
+                shoppingBag: newShoppingBagState
             };
 
         case CLEAR_SHOPPING_BAG:
@@ -70,6 +72,22 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 shoppingBagOpen: !state.shoppingBagOpen
+            };
+
+        case ADD_TO_WISHLIST:
+            return {
+                ...state,
+                wishlist: [...state.wishlist, action.product],
+            };
+
+        case REMOVE_FROM_WISHLIST:
+            let newWishlistState = state.wishlist.filter(product => {
+                return product._id !== action._id;
+            });
+
+            return {
+                ...state,
+                wishlist: newWishlistState
             };
 
         case UPDATE_CATEGORIES:
