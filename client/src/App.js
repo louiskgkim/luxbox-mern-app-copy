@@ -4,9 +4,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink, } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Header from './components/structure/Header';
-import Main from './components/structure/Main';
-import Footer from './components/structure/Footer';
+import Header from './components/Structure/Header';
+import Main from './components/Structure/Main';
+import Footer from './components/Structure/Footer';
 
 import { StoreProvider } from './utils/GlobalState';
 

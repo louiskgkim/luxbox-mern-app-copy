@@ -6,8 +6,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../../utils/queries';
 import Auth from '../../../utils/auth';
 
-import AccountDetail from '../../../components/account/AccountDetail';
-import OrderHistory from '../../../components/account/OrderHistory';
+import AccountDetail from '../../../components/Account/AccountDetail';
+import OrderHistory from '../../../components/Account/OrderHistory';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Accordion from '@mui/material/Accordion';

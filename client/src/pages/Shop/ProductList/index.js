@@ -20,8 +20,8 @@ import {
 } from '../../../utils/queries';
 import { idbPromise, formatCategoryName, flattenObj } from '../../../utils/helpers';
 
-import ProductCard from '../../../components/product/ProductCard';
-import NotFound from '../../../components/product/NotFound';
+import ProductCard from '../../../components/Product/ProductCard';
+import NotFound from '../../../components/Product/NotFound';
 
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
