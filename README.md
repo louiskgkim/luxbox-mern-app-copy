@@ -5,11 +5,21 @@ This project aims to provide a centralized platform for frequent luxury goods pu
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Credits](#credits)
-- [License](#license)
+- [LuxBox MERN App](#luxbox-mern-app)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Screenshots](#screenshots)
+    - [Homepage](#homepage)
+    - [Search Feature](#search-feature)
+    - [Sign-in Page](#sign-in-page)
+    - [Register Page](#register-page)
+    - [Designers Page](#designers-page)
+    - [Sale Page](#sale-page)
+    - [Repository:](#repository)
+  - [Credits](#credits)
+  - [License](#license)
 
 ## Installation
 Some files will be needed in order for this generator to operate:
@@ -26,7 +36,7 @@ Some files will be needed in order for this generator to operate:
 4. Run npm i into terminal to install dependencies
 5. Run npm run develop into terminal
 6. The application should now run on http://localhost:3000/
-7. Or access via Heroku: 
+7. Or access via Heroku:
 
 
 ## Screenshots

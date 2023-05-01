@@ -1,7 +1,7 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  # Define which fields are accessible from the Product model
+  # Define which fields are accessible from the model
 
   type Category {
     _id: ID

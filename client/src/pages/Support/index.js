@@ -1,4 +1,4 @@
 import ContactUs from './ContactUs';
-import Error from './Error';
+import WrongRouteError from './WrongRouteError';
 
-export { ContactUs, Error };
+export { ContactUs, WrongRouteError };

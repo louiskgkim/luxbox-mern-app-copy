@@ -4,7 +4,7 @@ import { formatCurrency } from '../../utils/helpers';
 
 const ProductCard = (props) => {
     return (
-        <Link to={`/shop/product/${props.name}`} className="link" state={{ product: props }}>
+        <Link to={`/shop/product/${props.designer}/${props.category}/${props.name}`} className="link" state={{ product: props }}>
             <div className="product-card-column">
                 <div className="product-card">
                     <div className="product-card-header">
@@ -17,7 +17,7 @@ const ProductCard = (props) => {
                         <p className="product-card-name">
                             {props.name}
                         </p>
-                        <p className="product-card-price">
+                        <div className="product-card-price">
                             {props.onSale === true
                                 ? (
                                     <div className="sale-price-wrapper">
@@ -27,7 +27,7 @@ const ProductCard = (props) => {
                                 )
                                 : formatCurrency(props.price)
                             }
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div >

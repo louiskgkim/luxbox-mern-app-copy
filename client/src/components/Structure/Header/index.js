@@ -1,5 +1,5 @@
 import Banner from './Banner';
-import Navigation from './navigation';
+import Navigation from './Navigation';
 
 const Header = (props) => {
 
