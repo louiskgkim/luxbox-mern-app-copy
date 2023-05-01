@@ -137,7 +137,6 @@ const ProductDetail = (props) => {
                 currentProduct.category.name === categoryParam &&
                 currentProduct.name === nameParam
             ) {
-                console.log(currentProduct);
                 return currentProduct;
             }
         }

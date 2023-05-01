@@ -32,6 +32,9 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 
 const ProductList = (props) => {
 
+    const [sortState, setSortState] = useState('test');
+    console.log(sortState);
+
     const { categoryParam, searchInputParam, designerParam, colorParam } = useParams();
 
     let formattedDesignerName;
@@ -119,6 +122,24 @@ const ProductList = (props) => {
         }
     }, [productData, loading, dispatch]);
 
+
+
+
+    // const sortMethods = {
+    //     none: { method: (a, b) => null },
+    //     newest: { method: (a, b) => parseInt(b.createdAt) - parseInt(a.createdAt) },
+    //     priceHighToLow: { method: (a, b) => parseInt(b.price) - parseInt(a.price) },
+    //     priceLowToHigh: { method: (a, b) => parseInt(a.price) - parseInt(b.price) },
+    // }
+
+    // console.log(sortState);
+    // useEffect(() => {
+    //     if (sortState !== 'none'){
+    //         return state.products.sort(sortMethods[sortState].method);
+    //     }
+
+    // })
+
     const filterProducts = () => {
         if (props.category === "New In") {
             return state.products;
@@ -142,18 +163,26 @@ const ProductList = (props) => {
         return state.products.filter((product) => product.category._id === currentCategory);
     }
 
-    const handleSortChange = (e) => {
-        // setSortState(e.target.value)
-        // console.log(products);
-        // products.sort((a, b) => {
-        //     if (sortState === "newest") {
-        //         return parseInt(b.createdAt) - parseInt(a.createdAt);
-        //     }
-        //     else if (sortState === "price-high-to-low") {
-        //         return parseInt(b.price) - parseInt(a.price);
-        //     }
-        // })
-    }
+
+    // const handleSortChange = (e) => {
+    //     setSortState(e.target.value)
+    //     console.log(sortState);
+
+    //     const sortProducts = (a, b) => {
+    //         switch (sortState) {
+    //             case "newest":
+    //                 return parseInt(b.createdAt) - parseInt(a.createdAt);
+    //             case "price-high-to-low":
+    //                 return parseInt(b.price) - parseInt(a.price);
+    //             case "price-low-to-high":
+    //                 return parseInt(a.price) - parseInt(b.price);
+    //             default:
+    //                 break;
+    //         }
+    //     }
+
+    //     return state.products.sort((a, b) => sortProducts);
+    // }
 
     const getSalePrice = (price) => {
         return (Math.ceil(price * 0.8));
@@ -196,11 +225,11 @@ const ProductList = (props) => {
                                                 borderBottom: "1px solid white",
                                             },
                                         }}
-                                        onChange={handleSortChange}
+                                        onChange={(e) => setSortState(e.target.value)}
                                     >
                                         <option value="newest">Newest</option>
-                                        <option value="price-high-to-low">Price High to Low</option>
-                                        <option value="price-low-to-high">Price Low to High</option>
+                                        <option value="priceHighToLow">Price High to Low</option>
+                                        <option value="priceLowToHigh">Price Low to High</option>
                                     </NativeSelect>
                                 </div>
                             </div>
