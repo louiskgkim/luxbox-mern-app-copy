@@ -45,7 +45,9 @@ class AlphabetList extends Component {
                 className={className}
                 style={{
                     position: 'relative',
-                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    // width: '100%',
                     ...(style ? style : {})
                 }}
             >
@@ -84,7 +86,7 @@ class AlphabetList extends Component {
                 </div> */}
                 <div
                     style={{
-                        width: '100%',
+                        // width: '100%',
                         height: '100%',
                         overflow: 'auto',
                     }}
